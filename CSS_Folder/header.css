@@ -10,7 +10,7 @@
     border-top-right-radius: 5px;
     align-items: center;
     justify-content: space-between;
-    height: 75px;
+    height: 85rem;
 
         
         .left-header-section{ 
@@ -23,6 +23,9 @@
         .center-header-section{ 
             display: flex;
             gap: 10px;
-        }
-
-}
+       }
+        
+       .right-header-section{ 
+            display: flex;
+       }
+} 

@@ -7,6 +7,10 @@ body{
 }
 
 
+*{ 
+    margin: 0;
+}
+
 .main-section{ 
     display: flex;
     flex-direction: column;
@@ -18,3 +22,40 @@ body{
     position: relative;
 }
 
+.intro-section{ 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-wrap: 1;
+    background-color: rgb(180, 137, 80);
+    padding: 50px;
+    
+        .intro-details{ 
+            display: flex;
+             
+            .my-image{ 
+                width: 20rem;
+                height: 20rem;
+                image-rendering: auto;
+            }
+
+        }
+
+        .details-section{ 
+            width: 35rem;
+            padding: 15px;
+            align-content: end;
+            margin: 0;
+
+            .details-text{ 
+                width: 35rem;
+                
+            }
+
+
+           
+        }
+        
+
+
+}
