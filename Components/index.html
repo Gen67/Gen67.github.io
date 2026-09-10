@@ -11,28 +11,36 @@
 <body>
     <div class="main-section">
         <div class="header-section">
-            
-            <div class="left-header-section">
-                <h1>Guren</h1> <p>Studio</p>
-            </div>
-            
-            <div class="center-header-section">
-                <p><a href="">Home</a></p>
-                <p><a href="">About</a></p>
-                <p><a href="">Projects</a></p>
-                <p><a href="">Contact</a></p>
-            </div>
-            
-            <div class="right-header-section">
-                <h3>My Socials : </h3>
-                <div class="social-section">
 
-                </div>
-            </div>
-           
+    <div class="left-header-section">
+        <h1>Guren</h1> <p>Studio</p>
+    </div>
+
+    <div class="center-header-section">
+        <p><a href="#home">Home</a></p>
+        <p><a href="#skills">Skills</a></p>
+        <p><a href="#projects">Projects</a></p>
+        <p><a href="#contact">Contact</a></p>
+    </div>
+
+    <div class="right-header-section">
+        <h3>My Socials :</h3>
+        <div class="social-section">
+            <a href="https://www.facebook.com/jessel.glenn.v.icatar/" target="_blank" rel="noopener noreferrer" class="header-social-icon" aria-label="Facebook">Fb</a>
+            <a href="https://www.instagram.com/guren_senpai_tv/" target="_blank" rel="noopener noreferrer" class="header-social-icon" aria-label="Instagram">Ig</a>
+            <a href="https://www.tiktok.com/@guren_senpai" target="_blank" rel="noopener noreferrer" class="header-social-icon" aria-label="TikTok">Tt</a>
+            <a href="https://github.com/Gen67" target="_blank" rel="noopener noreferrer" class="header-social-icon" aria-label="GitHub">Gh</a>
         </div>
 
-        <div class="intro-section">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark mode">
+            <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></svg>
+            <span id="themeLabel">Dark</span>
+        </button>
+    </div>
+
+</div>
+
+        <div class="intro-section" id="home">
             <div class="intro-text">
                   <p>Frontend Developer ---- Software Engineer</p>
                   <h1>Hello! my Name is Jessel Glenn V. Icatar</h1>    
@@ -45,12 +53,21 @@
                     </div>    
                     
                         
-                        <div class="button-intro-area">
-                             <button>EXPLORE PORTFOLIO</button>
-                            <p><a href="">See Resume</a></p>
+                       <div class="button-intro-area">
+                          <button class="btn-explore" id="exploreBtn">
+                              Explore Portfolio
+                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                  <path d="M5 12h14M13 6l6 6-6 6"></path>
+                              </svg>
+                          </button>
 
-                         </div>
-                  
+                          <a href="/images/Jessel-Glenn-Icatar-Resume.pdf" download="Jessel-Glenn-Icatar-Resume.pdf" class="btn-resume">
+                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                  <path d="C:\Users\Client\Desktop\Jessel-Glenn-Icatar-Resume.pdf"></path>
+                              </svg>
+                              See Resume
+                          </a>
+                      </div>
                 </div>
                 <div class="my-image-frame">
                   <img src="/images/Gradpic2.JPG" alt="" class="my-image">
@@ -61,7 +78,8 @@
         </div>
 
 
-        <div class="slider-wrap">
+        <div class="slider-wrap" id="projects">
+          <H1>My Work</H1>
   <div class="slider" id="slider" tabindex="0">
     <div class="slides" id="slides">
       <div class="slide">
@@ -115,6 +133,7 @@
     <button class="nav-btn next-btn" id="nextBtn" aria-label="Next slide">&#10095;</button>
   </div>
 
+   
   <div class="progress-track">
     <div class="progress-bar" id="progressBar"></div>
   </div>
@@ -122,7 +141,7 @@
   <div class="dots" id="dots"></div>
 </div>
 
-<div class="skills-section">
+<div class="skills-section" id="skills">
     <div class="skills-heading">
         <span class="eyebrow">What I Work With</span>
         <h2>Skills</h2>
@@ -212,7 +231,7 @@
     </div>
 </div>
 
-  <footer class="site-footer">
+  <footer class="site-footer" id="contact">
 
     <div class="footer-hire">
         <span class="eyebrow">Let's Work Together</span>
@@ -236,16 +255,16 @@
     <div class="footer-socials">
         <h3>Find Me Elsewhere</h3>
         <div class="social-links">
-            <a href="https://facebook.com/yourusername" target="_blank" rel="noopener noreferrer" class="social-link">
+            <a href="https://www.facebook.com/jessel.glenn.v.icatar/" target="_blank" rel="noopener noreferrer" class="social-link">
                 <span class="social-icon">Fb</span> Facebook
             </a>
-            <a href="https://instagram.com/yourusername" target="_blank" rel="noopener noreferrer" class="social-link">
+            <a href="https://www.instagram.com/guren_senpai_tv/" target="_blank" rel="noopener noreferrer" class="social-link">
                 <span class="social-icon">Ig</span> Instagram
             </a>
-            <a href="https://tiktok.com/@yourusername" target="_blank" rel="noopener noreferrer" class="social-link">
+            <a href="https://www.tiktok.com/@guren_senpai" target="_blank" rel="noopener noreferrer" class="social-link">
                 <span class="social-icon">Tt</span> TikTok
             </a>
-            <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" class="social-link">
+            <a href="https://github.com/Gen67" target="_blank" rel="noopener noreferrer" class="social-link">
                 <span class="social-icon">Gh</span> GitHub
             </a>
         </div>
@@ -260,7 +279,8 @@
 
     </div>
     <script src="skills-animate.js"></script>
-    <script src="footer-contact.js"></script>
+    <script src="Script/footer-contact.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script>
       (function () {
   const slider = document.getElementById('slider');
@@ -393,6 +413,13 @@
     const icon = document.getElementById('themeIcon');
     const label = document.getElementById('themeLabel');
  
+    // Guard: if the toggle button isn't on the page (wrong/missing IDs),
+    // bail out quietly instead of throwing and breaking scripts below it.
+    if (!toggle || !icon || !label) {
+        console.warn('Theme toggle: expected elements (#themeToggle, #themeIcon, #themeLabel) not found on the page.');
+        return;
+    }
+ 
     const sunPath = '<circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>';
     const moonPath = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
  
@@ -416,6 +443,116 @@
         applyTheme(current);
     });
 })();
+
+/* ============================================
+   CONTACT FORM — sends the message via EmailJS
+   (a client-side service; no backend server
+   needed). Falls back to a plain mailto: link
+   if EmailJS isn't configured or fails.
+   ============================================ */
+
+const EMAILJS_CONFIG = {
+  PUBLIC_KEY:  "IRYqrQLjv8_ytI_TA",
+  SERVICE_ID:  "service_8akgqpg",
+  TEMPLATE_ID: "template_8yhfrrn"
+};
+
+const YOUR_EMAIL_ADDRESS = "youremail@example.com"; // used only for the mailto: fallback
+
+(function () {
+  const form = document.getElementById("contactForm");
+  const sendBtn = document.getElementById("sendBtn");
+  const status = document.getElementById("formStatus");
+  const yearSpan = document.getElementById("footerYear");
+
+  if (yearSpan) {
+    yearSpan.textContent = new Date().getFullYear();
+  }
+
+  if (!form) return;
+
+  // Compares your actual keys above against the untouched placeholder
+  // text — this is what was broken before (it was comparing your keys
+  // against themselves, so it was always true even with bad config).
+  const isConfigured =
+    EMAILJS_CONFIG.PUBLIC_KEY !== "YOUR_PUBLIC_KEY" &&
+    EMAILJS_CONFIG.SERVICE_ID !== "YOUR_SERVICE_ID" &&
+    EMAILJS_CONFIG.TEMPLATE_ID !== "YOUR_TEMPLATE_ID" &&
+    EMAILJS_CONFIG.PUBLIC_KEY &&
+    EMAILJS_CONFIG.SERVICE_ID &&
+    EMAILJS_CONFIG.TEMPLATE_ID;
+
+  if (isConfigured && window.emailjs) {
+    emailjs.init({ publicKey: EMAILJS_CONFIG.PUBLIC_KEY });
+  }
+
+  function setStatus(text, type) {
+    status.textContent = text;
+    status.className = "form-status" + (type ? " " + type : "");
+  }
+
+  function mailtoFallback() {
+    const name = document.getElementById("user_name").value;
+    const email = document.getElementById("user_email").value;
+    const message = document.getElementById("message").value;
+
+    const subject = encodeURIComponent("Project inquiry from " + name);
+    const body = encodeURIComponent(
+      "Name: " + name + "\nEmail: " + email + "\n\n" + message
+    );
+
+    window.location.href =
+      "mailto:" + YOUR_EMAIL_ADDRESS + "?subject=" + subject + "&body=" + body;
+
+    setStatus("Opening your email app...", "success");
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    sendBtn.disabled = true;
+
+    if (!isConfigured || !window.emailjs) {
+      setStatus("Email service not set up yet — opening your email app instead.", "");
+      mailtoFallback();
+      sendBtn.disabled = false;
+      return;
+    }
+
+    setStatus("Sending...", "");
+
+    emailjs
+      .sendForm(EMAILJS_CONFIG.SERVICE_ID, EMAILJS_CONFIG.TEMPLATE_ID, form)
+      .then(function () {
+        setStatus("Message sent — thanks for reaching out!", "success");
+        form.reset();
+      })
+      .catch(function (error) {
+        console.error("EmailJS error:", error);
+        setStatus("Something went wrong. Opening your email app instead.", "error");
+        mailtoFallback();
+      })
+      .finally(function () {
+        sendBtn.disabled = false;
+      });
+  });
+})();
+
+(function () {
+  const exploreBtn = document.getElementById('exploreBtn');
+  if (!exploreBtn) return;
+ 
+  const TARGET_SELECTOR = '.slider-wrap'; // change to '.skills-section' or another id if you'd rather land there
+ 
+  exploreBtn.addEventListener('click', function () {
+    const target = document.querySelector(TARGET_SELECTOR);
+    if (!target) {
+      console.warn('Explore Portfolio: no element found matching', TARGET_SELECTOR);
+      return;
+    }
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+})();
+
 
   </script>
 </body>
