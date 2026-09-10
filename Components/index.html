@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/CSS_Folder/main.css">
-    <link rel="stylesheet" href="/CSS_Folder/header.css">
     <link rel="stylesheet" href="/CSS_Folder/slider.css">
 
     <title>Document</title>
@@ -53,7 +52,7 @@
                          </div>
                   
                 </div>
-                  <img src="/images/Picture.png" alt="" class="my-image">
+                  <img src="/images/Gradpic2.JPG" alt="" class="my-image">
             </div>
           
         </div>
@@ -66,26 +65,46 @@
         <img src="https://picsum.photos/id/1015/1200/675" alt="Mountain river landscape">
         <div class="slide-frame-border"></div>
         <div class="slide-caption">Wild rivers cutting through the mountains</div>
+        <div class="slide-hover-info">
+              <h3 class="hover-info-title">Slide Title</h3>
+              <p class="hover-info-desc">A short description of what this image shows.</p>
+        </div>
       </div>
       <div class="slide">
         <img src="https://picsum.photos/id/1018/1200/675" alt="Forest and lake landscape">
         <div class="slide-frame-border"></div>
         <div class="slide-caption">Quiet lakes at the edge of the forest</div>
+        <div class="slide-hover-info">
+         <h3 class="hover-info-title">Slide Title</h3>
+       <p class="hover-info-desc">A short description of what this image shows.</p>
+       </div>
       </div>
       <div class="slide">
         <img src="https://picsum.photos/id/1025/1200/675" alt="Dog portrait">
         <div class="slide-frame-border"></div>
         <div class="slide-caption">Every good trip needs a good companion</div>
+        <div class="slide-hover-info">
+            <h3 class="hover-info-title">Slide Title</h3>
+            <p class="hover-info-desc">A short description of what this image shows.</p>
+    </div>
       </div>
       <div class="slide">
         <img src="https://picsum.photos/id/1041/1200/675" alt="Snowy mountain range">
         <div class="slide-frame-border"></div>
         <div class="slide-caption">Peaks that never stop climbing</div>
+        <div class="slide-hover-info">
+           <h3 class="hover-info-title">Slide Title</h3>
+           <p class="hover-info-desc">A short description of what this image shows.</p>
+      </div>
       </div>
       <div class="slide">
         <img src="https://picsum.photos/id/1050/1200/675" alt="Coastal cliffs">
         <div class="slide-frame-border"></div>
         <div class="slide-caption">Where the land meets the sea</div>
+        <div class="slide-hover-info">
+          <h3 class="hover-info-title">Slide Title</h3>
+          <p class="hover-info-desc">A short description of what this image shows.</p>
+      </div>
       </div>
     </div>
 
@@ -111,10 +130,8 @@
 
 
     </div>
-
-
     <script>
-(function () {
+      (function () {
   const slider = document.getElementById('slider');
   const slidesContainer = document.getElementById('slides');
   const slides = Array.from(slidesContainer.querySelectorAll('.slide'));
@@ -122,6 +139,7 @@
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
   const progressBar = document.getElementById('progressBar');
+
 
   let current = 0;
   const total = slides.length;
@@ -232,7 +250,41 @@
 
   updateUI();
   restartAutoplay();
+
+
+
+})(); 
+
+
+(function () {
+    const root = document.documentElement;
+    const toggle = document.getElementById('themeToggle');
+    const icon = document.getElementById('themeIcon');
+    const label = document.getElementById('themeLabel');
+ 
+    const sunPath = '<circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>';
+    const moonPath = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
+ 
+    function applyTheme(theme) {
+        if (theme === 'light') {
+            root.setAttribute('data-theme', 'light');
+            icon.innerHTML = sunPath;
+            label.textContent = 'Light';
+        } else {
+            root.removeAttribute('data-theme');
+            icon.innerHTML = moonPath;
+            label.textContent = 'Dark';
+        }
+    }
+ 
+    let current = 'dark';
+    applyTheme(current);
+ 
+    toggle.addEventListener('click', function () {
+        current = current === 'dark' ? 'light' : 'dark';
+        applyTheme(current);
+    });
 })();
-</script>
+  </script>
 </body>
 </html>
