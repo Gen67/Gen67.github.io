@@ -52,7 +52,10 @@
                          </div>
                   
                 </div>
+                <div class="my-image-frame">
                   <img src="/images/Gradpic2.JPG" alt="" class="my-image">
+                </div>
+                  
             </div>
           
         </div>
@@ -119,17 +122,145 @@
   <div class="dots" id="dots"></div>
 </div>
 
+<div class="skills-section">
+    <div class="skills-heading">
+        <span class="eyebrow">What I Work With</span>
+        <h2>Skills</h2>
+    </div>
 
+    <div class="skills-grid">
+        <div class="skill-card">
+            <div class="skill-icon">Ja</div>
+            <p class="skill-name">Java</p>
+            <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-fill="78"></div>
+            </div>
+            <span class="skill-percent">78%</span>
+        </div>
+        <div class="skill-card">
+            <div class="skill-icon">&lt;/&gt;</div>
+            <p class="skill-name">HTML</p>
+            <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-fill="92"></div>
+            </div>
+            <span class="skill-percent">92%</span>
+        </div>
+        <div class="skill-card">
+            <div class="skill-icon">{ }</div>
+            <p class="skill-name">CSS</p>
+            <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-fill="88"></div>
+            </div>
+            <span class="skill-percent">88%</span>
+        </div>
+        <div class="skill-card">
+            <div class="skill-icon">JS</div>
+            <p class="skill-name">JavaScript</p>
+            <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-fill="84"></div>
+            </div>
+            <span class="skill-percent">84%</span>
+        </div>
+        <div class="skill-card">
+            <div class="skill-icon">⚛</div>
+            <p class="skill-name">React</p>
+            <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-fill="73"></div>
+            </div>
+            <span class="skill-percent">73%</span>
+        </div>
+        <div class="skill-card">
+            <div class="skill-icon">Fl</div>
+            <p class="skill-name">Flutter</p>
+            <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-fill="61"></div>
+            </div>
+            <span class="skill-percent">61%</span>
+        </div>
+        <div class="skill-card">
+            <div class="skill-icon">✳</div>
+            <p class="skill-name">Claude</p>
+            <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-fill="95"></div>
+            </div>
+            <span class="skill-percent">95%</span>
+        </div>
+        <div class="skill-card">
+            <div class="skill-icon">UX</div>
+            <p class="skill-name">UI/UX Design</p>
+            <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-fill="80"></div>
+            </div>
+            <span class="skill-percent">80%</span>
+        </div>
+        <div class="skill-card">
+            <div class="skill-icon">DB</div>
+            <p class="skill-name">Data Management</p>
+            <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-fill="70"></div>
+            </div>
+            <span class="skill-percent">70%</span>
+        </div>
+        <div class="skill-card">
+            <div class="skill-icon">Gh</div>
+            <p class="skill-name">GitHub</p>
+            <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-fill="90"></div>
+            </div>
+            <span class="skill-percent">90%</span>
+        </div>
+    </div>
+</div>
 
+  <footer class="site-footer">
 
+    <div class="footer-hire">
+        <span class="eyebrow">Let's Work Together</span>
+        <h2>Would you like to hire me?</h2>
+        <p class="footer-lead">Send a message and I'll get back to you as soon as I can — whether it's a full project, a quick freelance gig, or just a question.</p>
 
+        <form id="contactForm" class="contact-form">
+            <div class="form-row">
+                <input type="text" id="user_name" name="user_name" placeholder="Your name" required>
+                <input type="email" id="user_email" name="user_email" placeholder="Your email" required>
+            </div>
+            <textarea id="message" name="message" rows="4" placeholder="Tell me about the project..." required></textarea>
 
+            <div class="form-action-row">
+                <button type="submit" class="btn btn-primary" id="sendBtn">Send Message</button>
+                <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+            </div>
+        </form>
+    </div>
 
+    <div class="footer-socials">
+        <h3>Find Me Elsewhere</h3>
+        <div class="social-links">
+            <a href="https://facebook.com/yourusername" target="_blank" rel="noopener noreferrer" class="social-link">
+                <span class="social-icon">Fb</span> Facebook
+            </a>
+            <a href="https://instagram.com/yourusername" target="_blank" rel="noopener noreferrer" class="social-link">
+                <span class="social-icon">Ig</span> Instagram
+            </a>
+            <a href="https://tiktok.com/@yourusername" target="_blank" rel="noopener noreferrer" class="social-link">
+                <span class="social-icon">Tt</span> TikTok
+            </a>
+            <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" class="social-link">
+                <span class="social-icon">Gh</span> GitHub
+            </a>
+        </div>
+    </div>
 
+    <div class="footer-bottom">
+        <p>&copy; <span id="footerYear"></span> Jessel Glenn V. Icatar. All rights reserved.</p>
+    </div>
 
+</footer>
 
 
     </div>
+    <script src="skills-animate.js"></script>
+    <script src="footer-contact.js"></script>
     <script>
       (function () {
   const slider = document.getElementById('slider');
@@ -285,6 +416,7 @@
         applyTheme(current);
     });
 })();
+
   </script>
 </body>
 </html>

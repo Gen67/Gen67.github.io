@@ -181,17 +181,27 @@ body {
     margin: 0 auto;
 }
 
-.my-image {
+.my-image-frame {
     width: clamp(150px, 25vw, 320px);
     height: clamp(150px, 25vw, 320px);
     max-width: 100%;
     max-height: 100%;
-    object-fit: cover;
-    image-rendering: auto;
     flex-shrink: 1;
     border-radius: var(--radius);
     border: 1px solid var(--border);
     box-shadow: 0 0 0 4px rgba(79, 195, 247, 0.08);
+    overflow: hidden; /* clips the zoomed image to the rounded frame */
+}
+
+.my-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 15%;  
+    transform: scale(1.35);     
+    transform-origin: 50% 15%; 
+    display: block;
+    image-rendering: auto;
 }
 
 .details-section {
@@ -243,6 +253,285 @@ body {
 }
 
 
+
+.skills-section {
+    padding: var(--space-xl) var(--space-lg);
+    border-top: 1px solid var(--border);
+    background-color: var(--surface);
+}
+ 
+.skills-heading {
+    max-width: 1000px;
+    margin: 0 auto var(--space-lg);
+    text-align: center;
+}
+ 
+.skills-heading .eyebrow {
+    display: block;
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: var(--space-2xs);
+}
+ 
+.skills-heading h2 {
+    font-family: var(--font-display);
+    color: var(--text);
+    font-weight: 600;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+}
+ 
+/* Fixed column counts (rather than auto-fit) so the grid always divides
+   evenly into full rows — no lonely single card left dangling on its own
+   line at any screen size. 10 cards: 5 x 2 on desktop, 2 x 5 on mobile. */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--space-md);
+    max-width: 1100px;
+    margin: 0 auto;
+}
+ 
+.skill-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2xs);
+    padding: var(--space-lg) var(--space-sm);
+    background-color: var(--surface-raised);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+ 
+.skill-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    box-shadow: 0 14px 30px -14px rgba(79, 195, 247, 0.35);
+}
+ 
+.skill-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background-color: rgba(79, 195, 247, 0.12);
+    color: var(--accent);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: var(--space-3xs);
+}
+ 
+.skill-name {
+    margin: 0;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.3;
+}
+ 
+/* Skill level bar */
+.skill-bar-track {
+    width: 100%;
+    height: 5px;
+    margin-top: var(--space-2xs);
+    background-color: var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+}
+ 
+.skill-bar-fill {
+    height: 100%;
+    width: 0%;
+    background-color: var(--accent);
+    border-radius: 4px;
+    transition: width 900ms var(--ease-smooth, ease);
+}
+ 
+.skill-percent {
+    margin-top: var(--space-3xs);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+
+.site-footer {
+    border-top: 1px solid var(--border);
+    background-color: var(--surface-raised);
+    padding: var(--space-xl) var(--space-lg) var(--space-lg);
+}
+ 
+.footer-hire {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+}
+ 
+.footer-hire .eyebrow {
+    display: block;
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: var(--space-2xs);
+}
+ 
+.footer-hire h2 {
+    font-family: var(--font-display);
+    color: var(--text);
+    font-weight: 600;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    margin-bottom: var(--space-sm);
+}
+ 
+.footer-lead {
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: var(--space-lg);
+}
+ 
+/* Form */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    text-align: left;
+}
+ 
+.form-row {
+    display: flex;
+    gap: var(--space-sm);
+}
+ 
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: var(--space-sm);
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    resize: vertical;
+    transition: border-color 0.2s ease;
+}
+ 
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: var(--text-muted);
+}
+ 
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+ 
+.form-action-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+ 
+.form-status {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+ 
+.form-status.success {
+    color: #4ade80;
+}
+ 
+.form-status.error {
+    color: #f87171;
+}
+ 
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+}
+ 
+/* Socials */
+.footer-socials {
+    max-width: 640px;
+    margin: var(--space-xl) auto 0;
+    text-align: center;
+}
+ 
+.footer-socials h3 {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: var(--space-md);
+}
+ 
+.social-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-sm);
+}
+ 
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2xs);
+    padding: var(--space-2xs) var(--space-md);
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: border-color 0.2s ease, transform 0.2s ease, color 0.2s ease;
+}
+ 
+.social-link:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
+}
+ 
+.social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    background-color: rgba(79, 195, 247, 0.12);
+    color: var(--accent);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.7rem;
+}
+ 
+/* Bottom line */
+.footer-bottom {
+    text-align: center;
+    margin-top: var(--space-xl);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--border);
+}
+ 
+.footer-bottom p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}
 @media (max-width: 768px) {
 
     body {
@@ -348,5 +637,75 @@ body {
 @media (prefers-reduced-motion: reduce) {
     * {
         transition: none !important;
+    }
+}
+
+
+@media (max-width: 900px) {
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 520px;
+    }
+}
+ 
+@media (max-width: 768px) {
+    .skills-section {
+        padding: var(--space-lg) var(--space-sm);
+    }
+ 
+    .skills-grid {
+        gap: var(--space-sm);
+    }
+ 
+    .skill-card {
+        padding: var(--space-md) var(--space-xs);
+    }
+}
+ 
+@media (max-width: 480px) {
+    .skill-icon {
+        width: 34px;
+        height: 34px;
+        font-size: 0.85rem;
+    }
+ 
+    .skill-name {
+        font-size: 0.8rem;
+    }
+ 
+    .skill-percent {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .site-footer {
+        padding: var(--space-lg) var(--space-sm) var(--space-md);
+    }
+ 
+    .form-row {
+        flex-direction: column;
+        gap: var(--space-sm);
+    }
+ 
+    .form-action-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--space-xs);
+    }
+ 
+    .form-action-row .btn {
+        width: 100%;
+    }
+}
+ 
+@media (max-width: 480px) {
+    .social-links {
+        gap: var(--space-2xs);
+    }
+ 
+    .social-link {
+        font-size: 0.8rem;
+        padding: var(--space-3xs) var(--space-sm);
     }
 }
