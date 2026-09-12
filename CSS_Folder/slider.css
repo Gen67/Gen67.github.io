@@ -111,19 +111,16 @@ body {
 .slide img {
   width: 100%;
   height: 100%;
-
-  object-fit: cover;
-
+  object-fit: contain;
+  object-position: center;
+  background-color: var(--surface-raised);
   display: block;
-
   user-select: none;
   -webkit-user-drag: none;
-
-  transition: transform 600ms var(--ease-smooth);
+  transition: transform 600ms var(--ease-smooth, ease);
 }
+ 
 
-/* Gentle zoom on the active image while its info panel is up — gives the
-   hover a bit of life without moving anything else on the page. */
 .slide.active:hover img {
   transform: scale(1.04);
 }

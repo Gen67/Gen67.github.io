@@ -406,17 +406,6 @@ body {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
 .skills-section {
     padding: var(--space-xl) var(--space-lg);
     border-top: 1px solid var(--border);
@@ -534,6 +523,65 @@ body {
 .slider-wrap {
     scroll-margin-top: var(--header-height, 80px);
 }
+
+.video-section {
+    padding: var(--space-xl) var(--space-lg);
+    border-top: 1px solid var(--border);
+    background-color: var(--surface);
+}
+ 
+.video-heading {
+    max-width: 700px;
+    margin: 0 auto var(--space-lg);
+    text-align: center;
+}
+ 
+.video-heading .eyebrow {
+    display: block;
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: var(--space-2xs);
+}
+ 
+.video-heading h2 {
+    font-family: var(--font-display);
+    color: var(--text);
+    font-weight: 600;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    margin-bottom: var(--space-sm);
+}
+ 
+.video-lead {
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin: 0;
+}
+ 
+.video-frame {
+    max-width: 900px;
+    margin: 0 auto;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow:
+        0 0 0 4px rgba(79, 195, 247, 0.08),
+        0 25px 60px -24px rgba(0, 0, 0, 0.5);
+    background-color: #000;
+}
+ 
+.showcase-video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-color: #000;
+}
+ 
+.showcase-video::-webkit-media-controls-panel {
+    background-color: rgba(5, 8, 12, 0.7);
+}
+
+
  
 .footer-hire {
     max-width: 640px;
@@ -912,3 +960,19 @@ body {
     }
 }
  
+
+@media (max-width: 768px) {
+    .video-section {
+        padding: var(--space-lg) var(--space-sm);
+    }
+ 
+    .video-frame {
+        border-radius: calc(var(--radius) - 4px);
+    }
+}
+ 
+@media (max-width: 480px) {
+    .video-heading {
+        margin-bottom: var(--space-md);
+    }
+}
