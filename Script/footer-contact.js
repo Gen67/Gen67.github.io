@@ -11,7 +11,7 @@ const EMAILJS_CONFIG = {
   TEMPLATE_ID: "template_8yhfrrn"
 };
 
-const YOUR_EMAIL_ADDRESS = "youremail@example.com"; // used only for the mailto: fallback
+const YOUR_EMAIL_ADDRESS = "youremail@example.com"; // 
 
 (function () {
   const form = document.getElementById("contactForm");
@@ -25,9 +25,7 @@ const YOUR_EMAIL_ADDRESS = "youremail@example.com"; // used only for the mailto:
 
   if (!form) return;
 
-  // Compares your actual keys above against the untouched placeholder
-  // text — this is what was broken before (it was comparing your keys
-  // against themselves, so it was always true even with bad config).
+ 
   const isConfigured =
     EMAILJS_CONFIG.PUBLIC_KEY !== "YOUR_PUBLIC_KEY" &&
     EMAILJS_CONFIG.SERVICE_ID !== "YOUR_SERVICE_ID" &&
