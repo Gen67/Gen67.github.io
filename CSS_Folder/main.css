@@ -219,6 +219,10 @@ body {
 
 
 .intro-section {
+    --intro-fade-text: linear-gradient(90deg, var(--text) 0%, var(--accent-strong) 50%, rgba(79, 195, 247, 0.45) 100%);
+    --intro-glow: rgba(79, 195, 247, 0.16);
+
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -227,13 +231,96 @@ body {
     width: 100%;
 
     background:
-        radial-gradient(circle at 15% 20%, rgba(79, 195, 247, 0.10), transparent 55%),
+        radial-gradient(circle at 15% 20%, var(--intro-glow), transparent 55%),
+        radial-gradient(circle at 88% 90%, var(--intro-glow), transparent 50%),
         var(--surface);
     padding: clamp(var(--space-xl), 6vw, var(--space-2xl));
     box-sizing: border-box;
+    overflow: hidden;
+}
+
+html[data-theme="light"] .intro-section {
+    --intro-fade-text: linear-gradient(90deg, var(--text) 0%, var(--accent-strong) 55%, rgba(2, 132, 199, 0.5) 100%);
+    --intro-glow: rgba(2, 132, 199, 0.14);
+}
+
+/* Faint grid that fades out toward the edges */
+.intro-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 48px 48px;
+    -webkit-mask-image: radial-gradient(ellipse at 50% 40%, #000 0%, transparent 70%);
+    mask-image: radial-gradient(ellipse at 50% 40%, #000 0%, transparent 70%);
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Heading block */
+.intro-text {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto clamp(var(--space-xl), 6vw, var(--space-2xl));
+    text-align: center;
+}
+
+/* "Frontend Developer ---- Software Engineer" becomes a pill */
+.intro-text p {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-3xs) var(--space-md);
+    margin-bottom: var(--space-md);
+    background-color: rgba(79, 195, 247, 0.08);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--accent);
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.intro-text p::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background-color: var(--accent);
+    animation: intro-pulse 2.4s ease-out infinite;
+}
+
+@keyframes intro-pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(79, 195, 247, 0.5); }
+    70%  { box-shadow: 0 0 0 8px rgba(79, 195, 247, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(79, 195, 247, 0); }
+}
+
+/* Name — white fading into sky blue, then into a soft blue */
+.intro-text h1 {
+    font-family: var(--font-display);
+    font-size: clamp(1.9rem, 5vw, 3.4rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    padding-bottom: 0.1em;
+    text-wrap: balance;
+    background-image: var(--intro-fade-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
 }
 
 .intro-details {
+    position: relative;
+    z-index: 1;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -243,25 +330,38 @@ body {
     margin: 0 auto;
 }
 
+/* Photo — soft ring, glow, and a sky-blue fade from the bottom */
 .my-image-frame {
+    position: relative;
     width: clamp(150px, 25vw, 320px);
-    height: clamp(150px, 25vw, 320px);
+    aspect-ratio: 1 / 1;
     max-width: 100%;
-    max-height: 100%;
     flex-shrink: 1;
     border-radius: var(--radius);
-    border: 1px solid var(--border);
-    box-shadow: 0 0 0 4px rgba(79, 195, 247, 0.08);
+    border: 1px solid rgba(79, 195, 247, 0.35);
+    box-shadow:
+        0 0 0 6px rgba(79, 195, 247, 0.07),
+        0 0 0 7px var(--border),
+        0 30px 80px -30px var(--intro-glow);
     overflow: hidden; /* clips the zoomed image to the rounded frame */
+}
+
+.my-image-frame::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(to top, rgba(79, 195, 247, 0.22) 0%, transparent 45%);
 }
 
 .my-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 50% 15%;  
-    transform: scale(1.35);     
-    transform-origin: 50% 15%; 
+    object-position: 50% 15%;
+    transform: scale(1.35);
+    transform-origin: 50% 15%;
     display: block;
     image-rendering: auto;
 }
@@ -278,14 +378,18 @@ body {
     gap: var(--space-sm);
 }
 
+/* Paragraph — fading bar on the left, text eases from bright to muted */
 .details-text {
     width: 100%;
     max-width: 35rem;
     margin: 0;
+    padding-left: var(--space-md);
+    border-left: 2px solid transparent;
+    border-image: linear-gradient(to bottom, var(--accent), transparent) 1;
     overflow-wrap: break-word;
     word-wrap: break-word;
     color: var(--text-muted);
-    line-height: 1.65;
+    line-height: 1.75;
 }
 
 .details-text h1,
@@ -308,6 +412,12 @@ body {
 
 .details-text p {
     margin-bottom: var(--space-sm);
+    font-size: 1.02rem;
+    background-image: linear-gradient(180deg, var(--text) 0%, var(--text-muted) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
 }
 
 .details-text p:last-child {
@@ -322,7 +432,7 @@ body {
     margin-top: var(--space-md);
     flex-wrap: wrap;
 }
- 
+
 /* Shared button-ish sizing/behavior for both */
 .btn-explore,
 .btn-resume {
@@ -344,7 +454,7 @@ body {
                 background-color 0.2s ease,
                 color 0.2s ease;
 }
- 
+
 .btn-explore svg,
 .btn-resume svg {
     width: 16px;
@@ -352,58 +462,79 @@ body {
     flex-shrink: 0;
     transition: transform 0.2s var(--ease-smooth, ease);
 }
- 
-/* Primary — solid accent, the main call to action */
+
+/* Primary — sky-blue fade, the main call to action */
 .btn-explore {
     background-color: var(--accent);
+    background-image: linear-gradient(135deg, var(--accent-strong) 0%, var(--accent) 100%);
     color: var(--accent-text);
     border: none;
     box-shadow: 0 8px 22px -10px rgba(79, 195, 247, 0.55);
 }
- 
+
 .btn-explore:hover {
     transform: translateY(-2px);
     box-shadow: 0 14px 30px -10px rgba(79, 195, 247, 0.65);
 }
- 
+
 .btn-explore:hover svg {
     transform: translateX(3px);
 }
- 
+
 .btn-explore:active {
     transform: translateY(0);
 }
- 
+
 .btn-explore:focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 3px;
 }
- 
+
 /* Secondary — outline/ghost, for the resume download */
 .btn-resume {
     background-color: transparent;
     color: var(--text);
     border: 1px solid var(--border);
 }
- 
+
 .btn-resume:hover {
     border-color: var(--accent);
+    background-color: rgba(79, 195, 247, 0.08);
     color: var(--accent);
     transform: translateY(-2px);
 }
- 
-.btn-resume:hover svg {
+
+/* The resume button's inline icon has no valid path in the HTML, so it is
+   hidden and replaced with a download icon drawn from CSS. */
+.btn-resume svg {
+    display: none;
+}
+
+.btn-resume::before {
+    content: "";
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    background-color: currentColor;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3v12M7 10l5 5 5-5M5 21h14'/%3E%3C/svg%3E") center / contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3v12M7 10l5 5 5-5M5 21h14'/%3E%3C/svg%3E") center / contain no-repeat;
+    transition: transform 0.2s var(--ease-smooth, ease);
+}
+
+.btn-resume:hover::before {
     transform: translateY(2px);
 }
- 
+
 .btn-resume:active {
     transform: translateY(0);
 }
- 
+
 .btn-resume:focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 3px;
 }
+
+
 .credentials-section {
     padding: var(--space-xl) var(--space-lg);
     border-top: 1px solid var(--border);
@@ -699,7 +830,133 @@ body {
     background-color: rgba(5, 8, 12, 0.7);
 }
 
-
+.channels-section {
+    padding: var(--space-xl) var(--space-lg);
+    border-top: 1px solid var(--border);
+    background-color: var(--surface);
+}
+ 
+.channels-heading {
+    max-width: 700px;
+    margin: 0 auto var(--space-lg);
+    text-align: center;
+}
+ 
+.channels-heading .eyebrow {
+    display: block;
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: var(--space-2xs);
+}
+ 
+.channels-heading h2 {
+    font-family: var(--font-display);
+    color: var(--text);
+    font-weight: 600;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    margin-bottom: var(--space-sm);
+}
+ 
+.channels-lead {
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin: 0 0 var(--space-lg);
+}
+ 
+/* Follow buttons */
+.channel-follow-row {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+}
+ 
+.follow-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2xs);
+    padding: var(--space-xs) var(--space-lg);
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    color: #fff;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+ 
+.follow-btn svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+ 
+.follow-btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.08);
+}
+ 
+.follow-youtube {
+    background-color: #ff0033;
+    border-color: #ff0033;
+    box-shadow: 0 8px 20px -10px rgba(255, 0, 51, 0.6);
+}
+ 
+.follow-tiktok {
+    background-color: #111418;
+    border-color: var(--border);
+    box-shadow: 0 8px 20px -10px rgba(79, 195, 247, 0.35);
+}
+ 
+/* Video grid — Shorts are vertical (9:16), so the grid runs narrower
+   columns instead of the wide 16:9 cards a normal YouTube grid would use. */
+.channels-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-md);
+    max-width: 1000px;
+    margin: 0 auto;
+}
+ 
+.video-card {
+    background-color: var(--surface-raised);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+ 
+.video-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    box-shadow: 0 16px 32px -18px rgba(79, 195, 247, 0.35);
+}
+ 
+.video-embed {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    background-color: #000;
+}
+ 
+.video-embed iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+ 
+.video-card-title {
+    margin: 0;
+    padding: var(--space-sm) var(--space-md);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.4;
+}
  
 .footer-hire {
     max-width: 640px;
@@ -1192,15 +1449,76 @@ body {
 }
 
 
-@media (max-width: 360px) {
+@media (max-width: 900px) {
+    .intro-details {
+        gap: var(--space-lg);
+    }
+}
 
+@media (max-width: 768px) {
+    .intro-section {
+        padding: var(--space-xl) var(--space-sm);
+    }
+
+    .intro-text {
+        margin-bottom: var(--space-lg);
+    }
+
+    .intro-details {
+        flex-direction: column;
+        gap: var(--space-md);
+        text-align: center;
+    }
+
+    /* Photo first on phones */
+    .my-image-frame {
+        order: -1;
+        width: clamp(180px, 45vw, 240px);
+    }
+
+    .details-section {
+        max-width: 600px;
+        padding: var(--space-2xs) 0;
+        align-items: center;
+    }
+
+    .details-text {
+        max-width: 100%;
+        padding-left: 0;
+        border-left: none;
+        border-image: none;
+    }
+
+    .button-intro-area {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .intro-text p {
+        padding: var(--space-3xs) var(--space-sm);
+        font-size: 0.7rem;
+        letter-spacing: 0.06em;
+    }
+
+    .details-text p {
+        font-size: 0.95rem;
+    }
+
+    .btn-explore,
+    .btn-resume {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 360px) {
     .intro-section {
         padding: var(--space-md) var(--space-2xs);
     }
 
-    .my-image {
+    .my-image-frame {
         width: 140px;
-        height: 140px;
     }
 
     .details-text {
@@ -1209,8 +1527,8 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    * {
-        transition: none !important;
+    .intro-text p::before {
+        animation: none;
     }
 }
 
@@ -1421,5 +1739,83 @@ body {
     .credential-badge {
         font-size: 0.65rem;
         padding: 3px var(--space-xs);
+    }
+}
+
+@media (max-width: 900px) {
+    .channels-grid {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 760px;
+    }
+}
+ 
+@media (max-width: 768px) {
+    .channels-section {
+        padding: var(--space-lg) var(--space-sm);
+    }
+ 
+    .channels-grid {
+        gap: var(--space-sm);
+    }
+}
+ 
+@media (max-width: 600px) {
+    .channels-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 420px;
+    }
+}
+ 
+@media (max-width: 480px) {
+    .follow-btn {
+        padding: var(--space-2xs) var(--space-md);
+        font-size: 0.8rem;
+    }
+ 
+    .video-card-title {
+        font-size: 0.78rem;
+        padding: var(--space-xs) var(--space-sm);
+    }
+}
+
+
+.credential-thumb,
+.my-image-frame {
+    position: relative;
+}
+
+.skeleton-host.is-loading::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    border-radius: inherit;
+    pointer-events: none;
+    background-color: var(--surface-raised);
+    background-image: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(79, 195, 247, 0.14) 50%,
+        transparent 100%
+    );
+    background-size: 200% 100%;
+    background-repeat: no-repeat;
+    animation: skeleton-shimmer 1.4s ease-in-out infinite;
+}
+
+
+.skeleton-host.is-loading > img,
+.skeleton-host.is-loading > iframe {
+    opacity: 0;
+}
+
+@keyframes skeleton-shimmer {
+    from { background-position: 200% 0; }
+    to   { background-position: -200% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .skeleton-host.is-loading::after {
+        animation: none;
     }
 }

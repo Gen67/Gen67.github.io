@@ -4,42 +4,43 @@
   --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
   --side-opacity: 0.35;
   --side-scale: 0.82;
-
-  /* Black & sky blue — matches the site theme */
-  --bg: #05080c;
-  --surface: #0c131c;
-  --surface-raised: #101a26;
-  --border: rgba(148, 197, 235, 0.16);
-  --text: #e8f1f8;
-  --text-muted: #90a7ba;
-  --accent: #4fc3f7;
   --dot-inactive: rgba(144, 167, 186, 0.4);
 }
 
 html[data-theme="light"] {
-  --bg: #eef5fa;
-  --surface: #ffffff;
-  --surface-raised: #f4f9fc;
-  --border: rgba(11, 60, 93, 0.14);
-  --text: #0b2436;
-  --text-muted: #4d6b81;
-  --accent: #0284c7;
   --dot-inactive: rgba(11, 60, 93, 0.25);
-}
-
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  padding: 20px;
-  min-height: 100vh;
-  background-color: var(--bg);
-  color: var(--text);
 }
 
 .slider-wrap {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+  padding: var(--space-xl) var(--space-lg);
+}
+
+/* "My Work" heading — styled here so the HTML stays untouched */
+.slider-wrap h1 {
+  text-align: center;
+  margin-bottom: var(--space-lg);
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  background-image: var(--text-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.slider-wrap h1::after {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 3px;
+  margin: var(--space-xs) auto 0;
+  border-radius: 999px;
+  background-image: var(--accent-fade);
 }
 
 .slider {
@@ -105,7 +106,10 @@ body {
   pointer-events: auto;
   z-index: 2;
 
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+  /* Soft sky-blue glow around the active slide */
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.5),
+    0 0 50px -12px var(--glow);
 }
 
 .slide img {
@@ -119,7 +123,6 @@ body {
   -webkit-user-drag: none;
   transition: transform 600ms var(--ease-smooth, ease);
 }
- 
 
 .slide.active:hover img {
   transform: scale(1.04);
@@ -134,6 +137,16 @@ body {
   border: 3px solid var(--border);
 
   pointer-events: none;
+
+  transition: border-color var(--transition-speed) var(--ease-smooth);
+}
+
+.slide.active .slide-frame-border {
+  border-color: rgba(79, 195, 247, 0.45);
+}
+
+html[data-theme="light"] .slide.active .slide-frame-border {
+  border-color: rgba(2, 132, 199, 0.45);
 }
 
 .slide-caption {
@@ -147,12 +160,13 @@ body {
 
   background: linear-gradient(
     to top,
-    rgba(0, 0, 0, 0.7),
+    rgba(0, 0, 0, 0.75),
     transparent
   );
 
   color: #fff;
 
+  font-family: var(--font-display);
   font-size: clamp(13px, 1.8vw, 19px);
   font-weight: 600;
 
@@ -199,9 +213,9 @@ body {
 
   background: linear-gradient(
     to top,
-    rgba(5, 8, 12, 0.88) 0%,
-    rgba(5, 8, 12, 0.55) 45%,
-    rgba(5, 8, 12, 0.1) 75%,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(2, 20, 32, 0.55) 45%,
+    rgba(2, 20, 32, 0.1) 75%,
     transparent 100%
   );
 
@@ -224,6 +238,7 @@ body {
 
 .hover-info-title {
   margin: 0 0 6px;
+  font-family: var(--font-display);
   font-size: clamp(16px, 2.2vw, 22px);
   font-weight: 700;
   letter-spacing: 0.01em;
@@ -280,12 +295,17 @@ body {
 
   transition:
     background-color 0.25s var(--ease-smooth),
+    color 0.25s var(--ease-smooth),
     transform 0.2s var(--ease-smooth),
-    border-color 0.25s var(--ease-smooth);
+    border-color 0.25s var(--ease-smooth),
+    box-shadow 0.25s var(--ease-smooth);
 }
 
 .nav-btn:hover {
+  background-color: var(--accent);
   border-color: var(--accent);
+  color: var(--accent-text);
+  box-shadow: 0 8px 22px -10px var(--glow);
 }
 
 .nav-btn:focus-visible {
@@ -345,6 +365,8 @@ body {
   width: 26px;
 
   border-radius: 6px;
+
+  box-shadow: 0 0 10px var(--glow);
 }
 
 .progress-track {
@@ -366,13 +388,16 @@ body {
 .progress-bar {
   height: 100%;
 
+  background-image: var(--accent-gradient);
   background-color: var(--accent);
 
   width: 0%;
 
   border-radius: 4px;
 
-  transition: width 0.2s linear;
+  /* No transition: the JS updates the width every frame, and a transition
+     here made the bar visibly "rewind" each time it reset to 0%. */
+  transition: none;
 }
 
 @media (max-width: 768px) {
@@ -380,6 +405,10 @@ body {
   :root {
     --frame-radius: 20px;
     --side-scale: 0.86;
+  }
+
+  .slider-wrap {
+    padding: var(--space-lg) var(--space-sm);
   }
 
   .slides {
@@ -434,24 +463,38 @@ body {
   .progress-track {
     width: 92%;
   }
+
+  .slider-wrap h1::after {
+    width: 44px;
+  }
+
+  .slide-hover-info {
+    padding: 20px 16px 14px;
+  }
 }
 
-/* Touch devices have no real ":hover" — show the info panel on tap/focus
-   instead so the content isn't unreachable on mobile. */
+/* Touch devices have no real ":hover", so the info panel is always shown
+   on the active slide instead. The description is trimmed to 2 lines so it
+   never covers too much of the image. */
 @media (hover: none) {
-  .slide.active .slide-hover-info,
-  .slide.active .hover-info-desc {
+  .slide.active .slide-caption {
     opacity: 0;
   }
 
-  .slide.active:focus-within .slide-hover-info,
-  .slide.active:focus-within .hover-info-desc {
+  .slide.active .slide-hover-info {
     opacity: 1;
     transform: translate3d(0, 0, 0);
   }
 
-  .slide.active:focus-within .slide-caption {
-    opacity: 0;
+  .slide.active .hover-info-desc {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+
+    display: -webkit-box;
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 }
 
