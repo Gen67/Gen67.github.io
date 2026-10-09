@@ -3,568 +3,655 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/CSS_Folder/main.css">
-    <link rel="stylesheet" href="/CSS_Folder/slider.css">
-    <link rel="shortcut icon" href="http://cdn.sstatic.net/stackoverflow/img/favicon.ico">
-    <link rel="apple-touch-icon" href="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png">
+    <meta name="description" content="Portfolio of Jessel Glenn V. Icatar: frontend developer, video editor, and graphic designer from Kalibo, Aklan.">
+    <meta name="theme-color" content="#05080c">
     <title>Guren Studio</title>
+
+    <!-- Favicon: inline, so there is no extra request -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2305080c'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%234fc3f7'/%3E%3C/svg%3E">
+
+    <!-- Fonts: connect early, and load without blocking first paint -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" media="print" onload="this.media='all'"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=Space+Grotesk:wght@500..700&display=swap">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=Space+Grotesk:wght@500..700&display=swap">
+    </noscript>
+
+    <!-- CSS: one file (the slider styles are inside main.css now) -->
+    <link rel="stylesheet" href="/CSS_Folder/main.css">
+
+    <!-- The hero photo is the largest thing on screen, so fetch it first -->
+    <link rel="preload" as="image" href="/images/Gradpic2.JPG" fetchpriority="high">
 </head>
 <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
     <div class="main-section">
-        <div class="header-section">
 
-    <div class="left-header-section">
-        <h1>Guren</h1> <p>Studio</p>
-    </div>
+        <!-- ============================================
+             HEADER
+             ============================================ -->
+        <header class="header-section">
 
-    <div class="center-header-section">
-        <p><a href="#home">Home</a></p>
-        <p><a href="#skills">Skills</a></p>
-        <p><a href="#projects">Projects</a></p>
-        <p><a href="#contact">Contact</a></p>
-    </div>
-
-    <div class="right-header-section">
-        <h3>My Socials :</h3>
-        <div class="social-section">
-            <a href="https://x.com/acting_guren" target="_blank" rel="noopener noreferrer" class="header-social-icon" aria-label="Twitter">X</a>
-            <a href="https://www.instagram.com/guren_senpai_tv/" target="_blank" rel="noopener noreferrer" class="header-social-icon" aria-label="Instagram">Ig</a>
-            <a href="https://www.tiktok.com/@guren_senpai" target="_blank" rel="noopener noreferrer" class="header-social-icon" aria-label="TikTok">Tt</a>
-            <a href="https://github.com/Gen67" target="_blank" rel="noopener noreferrer" class="header-social-icon" aria-label="GitHub">Gh</a>
-        </div>
-
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark mode">
-            <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></svg>
-            <span id="themeLabel">Dark</span>
-        </button>
-    </div>
-
-</div>
-
-        <div class="intro-section" id="home">
-            <div class="intro-text">
-                  <p>Frontend Developer ---- Software Engineer</p>
-                  <h1>Hello! my Name is Jessel Glenn V. Icatar</h1>    
+            <div class="left-header-section">
+                <span class="logo-name">Guren</span>
+                <p>Studio</p>
             </div>
 
-            <div class="intro-details">
-                <div class="details-section"> 
-                    <div class="details-text">
-                        <p>I want to become a Frontend Developer because I enjoy building complete applications, from designing user-friendly interfaces to developing functional software. I also have a strong interest in video editing and graphic design, which allows me to combine my technical skills with creativity. I aim to continuously improve my programming and creative skills while creating useful, meaningful, and visually engaging digital experiences.
-                        </p>
-                    </div>            
-                       <div class="button-intro-area">
-                          <button class="btn-explore" id="exploreBtn">
-                              Explore Portfolio
-                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                  <path d="M5 12h14M13 6l6 6-6 6"></path>
-                              </svg>
-                          </button>
+            <nav class="center-header-section" aria-label="Main">
+                <a href="#home">Home</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </nav>
 
-                          <a href="/images/Jessel-Glenn-Icatar-Resume.pdf" download="Jessel-Glenn-Icatar-Resume.pdf" class="btn-resume">
-                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                  <path d="C:\Users\Client\Desktop\Jessel-Glenn-Icatar-Resume.pdf"></path>
-                              </svg>
-                              See Resume
-                          </a>
-                      </div>
+            <div class="right-header-section">
+                <p class="socials-label">My Socials :</p>
+                <div class="social-section">
+                    <a href="https://x.com/acting_guren" target="_blank" rel="noopener noreferrer" class="header-social-icon" aria-label="X (Twitter), opens in a new tab"><span aria-hidden="true">X</span></a>
+                    <a href="https://www.instagram.com/guren_senpai_tv/" target="_blank" rel="noopener noreferrer" class="header-social-icon" aria-label="Instagram, opens in a new tab"><span aria-hidden="true">Ig</span></a>
+                    <a href="https://www.tiktok.com/@guren_senpai" target="_blank" rel="noopener noreferrer" class="header-social-icon" aria-label="TikTok, opens in a new tab"><span aria-hidden="true">Tt</span></a>
+                    <a href="https://github.com/Gen67" target="_blank" rel="noopener noreferrer" class="header-social-icon" aria-label="GitHub, opens in a new tab"><span aria-hidden="true">Gh</span></a>
                 </div>
-                <div class="my-image-frame">
-                  <img src="/images/Gradpic2.JPG" alt="" class="my-image">
+
+                <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark mode" aria-pressed="false">
+                    <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"></svg>
+                    <span id="themeLabel">Dark</span>
+                </button>
+            </div>
+
+        </header>
+
+        <main id="main" tabindex="-1">
+
+            <!-- ============================================
+                 INTRO
+                 ============================================ -->
+            <section class="intro-section" id="home" aria-labelledby="intro-title">
+                <div class="intro-text">
+                    <p>Frontend Developer ---- Software Engineer</p>
+                    <h1 id="intro-title">Hello! My name is Jessel Glenn V. Icatar</h1>
+                </div>
+
+                <div class="intro-details">
+                    <div class="details-section">
+                        <div class="details-text">
+                            <p>I want to become a Frontend Developer because I enjoy building complete applications, from designing user-friendly interfaces to developing functional software. I also have a strong interest in video editing and graphic design, which allows me to combine my technical skills with creativity. I aim to continuously improve my programming and creative skills while creating useful, meaningful, and visually engaging digital experiences.</p>
+                        </div>
+                        <div class="button-intro-area">
+                            <button type="button" class="btn-explore" id="exploreBtn">
+                                Explore Portfolio
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M5 12h14M13 6l6 6-6 6"></path>
+                                </svg>
+                            </button>
+
+                            <a href="/images/Jessel-Glenn-Icatar-Resume.pdf" download="Jessel-Glenn-Icatar-Resume.pdf" class="btn-resume">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M12 3v12M7 10l5 5 5-5M5 21h14"></path>
+                                </svg>
+                                See Resume
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="my-image-frame">
+                        <img src="/images/Gradpic2.JPG"
+                             alt="Portrait of Jessel Glenn Icatar in a graduation gown"
+                             class="my-image" fetchpriority="high" decoding="async">
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- ============================================
+                 PROJECTS SLIDER
+                 ============================================ -->
+            <section class="slider-wrap" id="projects" aria-labelledby="projects-title">
+                <h2 id="projects-title">My Work</h2>
+
+                <div class="slider" id="slider" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Projects">
+                    <div class="slides" id="slides">
+
+                        <div class="slide" role="group" aria-roledescription="slide" aria-label="1 of 5">
+                            <img src="../images/warangta.png"
+                                 alt="Warang Ta game screenshot" decoding="async">
+                            <div class="slide-frame-border"></div>
+                            <div class="slide-caption">Educational game: "Warang Ta"</div>
+                            <div class="slide-hover-info">
+                                <h3 class="hover-info-title">Warang Ta</h3>
+                                <p class="hover-info-desc">Warang Ta is an educational game about the history, culture, language, and tourist attractions of Kalibo, Aklan, featuring interactive quizzes and mini-games.</p>
+                            </div>
+                        </div>
+
+                        <div class="slide" role="group" aria-roledescription="slide" aria-label="2 of 5">
+                            <img src="../images/Enrollment.png"
+                                 alt="Online enrollment system screenshot" decoding="async">
+                            <div class="slide-frame-border"></div>
+                            <div class="slide-caption">Online Enrollment System</div>
+                            <div class="slide-hover-info">
+                                <h3 class="hover-info-title">Online Enrollment</h3>
+                                <p class="hover-info-desc">An online enrollment system where students can enroll, check grades, view schedules, and read school updates. Teachers can post schedules, grades, and school updates.</p>
+                            </div>
+                        </div>
+
+                        <div class="slide" role="group" aria-roledescription="slide" aria-label="3 of 5">
+                            <img src="../images/videoEditing.png"
+                                 alt="Video editing sample" decoding="async">
+                            <div class="slide-frame-border"></div>
+                            <div class="slide-caption">Video Editing</div>
+                            <div class="slide-hover-info">
+                                <h3 class="hover-info-title">Video Editor</h3>
+                                <p class="hover-info-desc">I edit videos for Shorts, Reels, and TikTok, with good pacing, color grading, and sound design.</p>
+                            </div>
+                        </div>
+
+                        <div class="slide" role="group" aria-roledescription="slide" aria-label="4 of 5">
+                            <img src="../images/Coming soon.png"
+                                 alt="" decoding="async">
+                            <div class="slide-frame-border"></div>
+                            <div class="slide-caption">Coming Soon</div>
+                            <div class="slide-hover-info">
+                                <h3 class="hover-info-title">Coming Soon</h3>
+                                <p class="hover-info-desc">A new project is on the way.</p>
+                            </div>
+                        </div>
+
+                        <div class="slide" role="group" aria-roledescription="slide" aria-label="5 of 5">
+                            <img src="../images/Coming soon.png"
+                                 alt="" decoding="async">
+                            <div class="slide-frame-border"></div>
+                            <div class="slide-caption">Coming Soon</div>
+                            <div class="slide-hover-info">
+                                <h3 class="hover-info-title">Coming Soon</h3>
+                                <p class="hover-info-desc">Another project is on the way.</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <button type="button" class="nav-btn prev-btn" id="prevBtn" aria-label="Previous slide">&#10094;</button>
+                    <button type="button" class="nav-btn next-btn" id="nextBtn" aria-label="Next slide">&#10095;</button>
+                </div>
+
+                <div class="progress-track" aria-hidden="true">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+
+                <div class="dots" id="dots"></div>
+
+                <button type="button" class="slider-pause" id="pauseBtn">Pause slideshow</button>
+            </section>
+
+
+            <!-- ============================================
+                 SKILLS
+                 ============================================ -->
+            <section class="skills-section" id="skills" aria-labelledby="skills-title">
+                <div class="skills-heading">
+                    <span class="eyebrow">What I Work With</span>
+                    <h2 id="skills-title">Skills</h2>
+                </div>
+
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-icon" aria-hidden="true">Ja</div>
+                        <p class="skill-name">Java</p>
+                        <div class="skill-bar-track" aria-hidden="true">
+                            <div class="skill-bar-fill" data-fill="78"></div>
+                        </div>
+                        <span class="skill-percent">78%</span>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon" aria-hidden="true">&lt;/&gt;</div>
+                        <p class="skill-name">HTML</p>
+                        <div class="skill-bar-track" aria-hidden="true">
+                            <div class="skill-bar-fill" data-fill="92"></div>
+                        </div>
+                        <span class="skill-percent">92%</span>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon" aria-hidden="true">{ }</div>
+                        <p class="skill-name">CSS</p>
+                        <div class="skill-bar-track" aria-hidden="true">
+                            <div class="skill-bar-fill" data-fill="88"></div>
+                        </div>
+                        <span class="skill-percent">88%</span>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon" aria-hidden="true">JS</div>
+                        <p class="skill-name">JavaScript</p>
+                        <div class="skill-bar-track" aria-hidden="true">
+                            <div class="skill-bar-fill" data-fill="84"></div>
+                        </div>
+                        <span class="skill-percent">84%</span>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon" aria-hidden="true">⚛</div>
+                        <p class="skill-name">React</p>
+                        <div class="skill-bar-track" aria-hidden="true">
+                            <div class="skill-bar-fill" data-fill="73"></div>
+                        </div>
+                        <span class="skill-percent">73%</span>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon" aria-hidden="true">TW</div>
+                        <p class="skill-name">Tailwind CSS</p>
+                        <div class="skill-bar-track" aria-hidden="true">
+                            <div class="skill-bar-fill" data-fill="71"></div>
+                        </div>
+                        <span class="skill-percent">71%</span>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon" aria-hidden="true">✳</div>
+                        <p class="skill-name">Claude</p>
+                        <div class="skill-bar-track" aria-hidden="true">
+                            <div class="skill-bar-fill" data-fill="95"></div>
+                        </div>
+                        <span class="skill-percent">95%</span>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon" aria-hidden="true">UX</div>
+                        <p class="skill-name">UI/UX Design</p>
+                        <div class="skill-bar-track" aria-hidden="true">
+                            <div class="skill-bar-fill" data-fill="80"></div>
+                        </div>
+                        <span class="skill-percent">80%</span>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon" aria-hidden="true">DB</div>
+                        <p class="skill-name">Data Management</p>
+                        <div class="skill-bar-track" aria-hidden="true">
+                            <div class="skill-bar-fill" data-fill="70"></div>
+                        </div>
+                        <span class="skill-percent">70%</span>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon" aria-hidden="true">Gh</div>
+                        <p class="skill-name">GitHub</p>
+                        <div class="skill-bar-track" aria-hidden="true">
+                            <div class="skill-bar-fill" data-fill="90"></div>
+                        </div>
+                        <span class="skill-percent">90%</span>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- ============================================
+                 CERTIFICATES & AWARDS
+                 ============================================ -->
+            <section class="credentials-section" id="credentials" aria-labelledby="credentials-title">
+                <div class="credentials-heading">
+                    <span class="eyebrow">Recognition</span>
+                    <h2 id="credentials-title">Certificates &amp; Awards</h2>
+                    <p class="credentials-lead">A few certifications, awards, and my diploma from throughout my studies and training.</p>
+                </div>
+
+                <div class="credentials-grid">
+
+                    <a href="../images/Diploma.png" target="_blank" rel="noopener noreferrer" class="credential-card">
+                        <span class="credential-badge">Diploma</span>
+                        <div class="credential-thumb">
+                            <img src="../images/Diploma.png"
+                                 alt="Diploma" loading="lazy" decoding="async">
+                        </div>
+                        <div class="credential-info">
+                            <h3 class="credential-title">Bachelor's Science in Computer Science</h3>
+                            <p class="credential-issuer">Garcia College of Technology &middot; 2026</p>
+                        </div>
+                    </a>
+
+                    <a href="../images/Digital Manager Certificate.png" target="_blank" rel="noopener noreferrer" class="credential-card">
+                        <span class="credential-badge">Certificate</span>
+                        <div class="credential-thumb">
+                            <img src="../images/Digital Manager Certificate.png"
+                                 alt="HubSpot Academy Social Media Marketing certificate" loading="lazy" decoding="async">
+                        </div>
+                        <div class="credential-info">
+                            <h3 class="credential-title">Social Media Marketing</h3>
+                            <p class="credential-issuer">HubSpot Academy &middot; 2026</p>
+                        </div>
+                    </a>
+
+                    <a href="../images/OJT Cert.png" target="_blank" rel="noopener noreferrer" class="credential-card">
+                        <span class="credential-badge">Certificate</span>
+                        <div class="credential-thumb">
+                            <img src="../images/OJT Cert.png"
+                                 alt="On-the-Job Training completion certificate" loading="lazy" decoding="async">
+                        </div>
+                        <div class="credential-info">
+                            <h3 class="credential-title">On-the-Job Training Completion</h3>
+                            <p class="credential-issuer">Provincial General Services Office &middot; 2026</p>
+                        </div>
+                    </a>
+
+                    <a href="../images/People'sChoice.png" target="_blank" rel="noopener noreferrer" class="credential-card">
+                        <span class="credential-badge award">Award</span>
+                        <div class="credential-thumb">
+                            <img src="../images/People'sChoice.png"
+                                 alt="People's Choice award for poster making" loading="lazy" decoding="async">
+                        </div>
+                        <div class="credential-info">
+                            <h3 class="credential-title">The People's Choice</h3>
+                            <p class="credential-issuer">Poster Making &middot; 2024</p>
+                        </div>
+                    </a>
+
+                </div>
+            </section>
+
+
+            <!-- ============================================
+                 VIDEO EDITING
+                 ============================================ -->
+            <section class="video-section" id="editing" aria-labelledby="editing-title">
+                <div class="video-heading">
+                    <span class="eyebrow">See It In Action</span>
+                    <h2 id="editing-title">Video Editing</h2>
+                    <p class="video-lead" id="videoDesc">A short reel showing my approach to pacing, color grading, and sound design.</p>
+                </div>
+
+                <div class="video-frame">
+                    <!-- preload="none" keeps the video from downloading until someone presses play.
+                         To add captions, export a .vtt file from CapCut and uncomment the <track> line. -->
+                    <video
+                        class="showcase-video"
+                        controls
+                        preload="none"
+                        poster="../images/thumbnail.png"
+                        aria-describedby="videoDesc">
+
+                        <source src="../videos/Compress.mp4" type="video/mp4">
+                        <!-- <track kind="captions" src="../videos/Compress.en.vtt" srclang="en" label="English" default> -->
+
+                        Your browser doesn't support embedded video.
+                        <a href="../videos/Compress.mp4">Download the video</a>
+                    </video>
+                </div>
+            </section>
+
+
+            <!-- ============================================
+                 GRAPHIC DESIGNS
+                 ============================================ -->
+            <section class="designs-section" id="designs" aria-labelledby="designs-title">
+                <div class="designs-heading">
+                    <span class="eyebrow">Visual Work</span>
+                    <h2 id="designs-title">Graphic Designs</h2>
+                    <p class="designs-lead">A few pieces showing my range across branding, social media, and print layouts.</p>
+                </div>
+
+                <div class="designs-grid">
+
+                    <div class="design-card" tabindex="0" role="group" aria-label="Poster Design">
+                        <img src="../images/Poster Media.png"
+                             alt="Poster design" loading="lazy" decoding="async">
+                        <div class="design-overlay">
+                            <h3 class="design-title">Poster Design</h3>
+                            <p class="design-category">Print &middot; Layout Design</p>
+                        </div>
+                    </div>
+
+                    <div class="design-card" tabindex="0" role="group" aria-label="Event Poster">
+                        <img src="../images/Event Poster.png"
+                             alt="Event poster" loading="lazy" decoding="async">
+                        <div class="design-overlay">
+                            <h3 class="design-title">Event Poster</h3>
+                            <p class="design-category">Social Media Design</p>
+                        </div>
+                    </div>
+
+                    <div class="design-card" tabindex="0" role="group" aria-label="Social Media Post">
+                        <img src="../images/Social Media Post.png"
+                             alt="Social media post design" loading="lazy" decoding="async">
+                        <div class="design-overlay">
+                            <h3 class="design-title">Social Media Post</h3>
+                            <p class="design-category">Social Media Design</p>
+                        </div>
+                    </div>
+
+                    <div class="design-card" tabindex="0" role="group" aria-label="Web Banner">
+                        <img src="../images/Banner Design.png"
+                             alt="Banner design" loading="lazy" decoding="async">
+                        <div class="design-overlay">
+                            <h3 class="design-title">Web Banner</h3>
+                            <p class="design-category">Digital Ad Design</p>
+                        </div>
+                    </div>
+
+                    <div class="design-card" tabindex="0" role="group" aria-label="Business Card">
+                        <img src="../images/Business Card.png"
+                             alt="Business card design" loading="lazy" decoding="async">
+                        <div class="design-overlay">
+                            <h3 class="design-title">Business Card</h3>
+                            <p class="design-category">Print &middot; Branding</p>
+                        </div>
+                    </div>
+
+                    <div class="design-card" tabindex="0" role="group" aria-label="Video Thumbnail">
+                        <img src="../images/YTThumbnail.png"
+                             alt="Video thumbnail design" loading="lazy" decoding="async">
+                        <div class="design-overlay">
+                            <h3 class="design-title">Video Thumbnail</h3>
+                            <p class="design-category">Social Media Design</p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+
+            <!-- ============================================
+                 YOUTUBE & TIKTOK (turned off for now)
+                 If you turn this back on, use a click-to-load facade
+                 (like lite-youtube-embed) instead of four full iframes.
+                 ============================================ -->
+            <!--
+            <section class="channels-section" id="videos" aria-labelledby="videos-title">
+                <div class="channels-heading">
+                    <span class="eyebrow">Watch My Content</span>
+                    <h2 id="videos-title">YouTube &amp; TikTok</h2>
+                    <p class="channels-lead">Same videos, two platforms — follow along on whichever you use.</p>
+
+                    <div class="channel-follow-row">
+                        <a href="https://www.youtube.com/@guren_was_here" target="_blank" rel="noopener noreferrer" class="follow-btn follow-youtube">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 7.2s-.21-1.5-.87-2.16c-.83-.87-1.76-.87-2.19-.92C15.4 4 12 4 12 4h-.01s-3.39 0-6.53.12c-.43.05-1.36.05-2.19.92-.66.66-.87 2.16-.87 2.16S2.18 9 2.18 10.8v1.68c0 1.8.22 3.6.22 3.6s.21 1.5.87 2.16c.83.87 1.92.84 2.4.93 1.74.17 7.33.22 7.33.22s3.4-.01 6.54-.13c.43-.05 1.36-.05 2.19-.92.66-.66.87-2.16.87-2.16s.22-1.8.22-3.6v-1.68c0-1.8-.22-3.6-.22-3.6zM9.95 14.6V8.8l5.6 2.9-5.6 2.9z"/></svg>
+                            YouTube
+                        </a>
+                        <a href="https://www.tiktok.com/@guren_senpai" target="_blank" rel="noopener noreferrer" class="follow-btn follow-tiktok">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 5.82c-.87-.96-1.35-2.2-1.35-3.52h-3.07v13.9c0 1.56-1.27 2.83-2.83 2.83a2.83 2.83 0 0 1-2.83-2.83 2.83 2.83 0 0 1 2.83-2.83c.3 0 .58.05.85.14V10.4a6 6 0 0 0-.85-.06A5.95 5.95 0 0 0 3.5 16.3a5.95 5.95 0 0 0 5.95 5.95 5.95 5.95 0 0 0 5.95-5.95V9.1a8.7 8.7 0 0 0 5.08 1.63V7.66a5.33 5.33 0 0 1-3.88-1.84z"/></svg>
+                            TikTok
+                        </a>
+                    </div>
+                </div>
+
+                <div class="channels-grid">
+
+                    <div class="video-card">
+                        <div class="video-embed">
+                            <iframe src="https://www.youtube.com/embed/sTl0DBXaT3M" title="The Mora Game - SFX re-edit"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen loading="lazy"></iframe>
+                        </div>
+                        <p class="video-card-title">The Mora Game - SFX re-edit | BOW BOW BOW 🎶 | #fyp #foryou #GenshinImpact</p>
+                    </div>
+
+                    <div class="video-card">
+                        <div class="video-embed">
+                            <iframe src="https://www.youtube.com/embed/S3wf4Lvrb-0" title="Paimon can't Catch that"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen loading="lazy"></iframe>
+                        </div>
+                        <p class="video-card-title">Paimon can't Catch that 😂 | #fyp #foryou #GenshinImpact</p>
+                    </div>
+
+                    <div class="video-card">
+                        <div class="video-embed">
+                            <iframe src="https://www.youtube.com/embed/Ksak220bphg" title="He's happy for her"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen loading="lazy"></iframe>
+                        </div>
+                        <p class="video-card-title">He's happy for her🥲 | Multo 🎶 | #fyp #foryou #GenshinImpact</p>
+                    </div>
+
+                    <div class="video-card">
+                        <div class="video-embed">
+                            <iframe src="https://www.youtube.com/embed/2WPsdLzGg4Q" title="Traveler and Childe's Master"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen loading="lazy"></iframe>
+                        </div>
+                        <p class="video-card-title">Traveler and Childe's Master #genshinimpact #genshin #gesnhinimpact</p>
+                    </div>
+
+                </div>
+            </section>
+            -->
+
+
+            <!-- ============================================
+                 WORK EXPERIENCE
+                 ============================================ -->
+            <section class="experience-section" id="experience" aria-labelledby="experience-title">
+                <div class="experience-heading">
+                    <span class="eyebrow">Where I've Worked</span>
+                    <h2 id="experience-title">Work Experience</h2>
+                </div>
+
+                <div class="timeline">
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-card">
+                            <h3 class="timeline-role">Supervising Administrative Officer Assistant</h3>
+                            <p class="timeline-org">Provincial General Services Office (PGSO) &middot; On-the-Job Trainee</p>
+                            <p class="timeline-desc">
+                                Served as an On-the-Job Trainee (OJT) assistant to the Supervising Administrative Officer,
+                                assisting with administrative tasks, document organization, data encoding, and daily
+                                office operations while gaining professional workplace experience.
+                            </p>
+                            <div class="timeline-tags">
+                                <span class="timeline-tag">Administrative Support</span>
+                                <span class="timeline-tag">Data Encoding</span>
+                                <span class="timeline-tag">Document Organization</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-card">
+                            <h3 class="timeline-role">Freelancer</h3>
+                            <p class="timeline-org">Freelance Developer</p>
+                            <p class="timeline-desc">
+                                Worked as a freelance developer, assisting clients with websites and digital projects
+                                while applying HTML, CSS, JavaScript, and basic programming skills. This experience
+                                strengthened problem-solving, communication, time management, and client collaboration
+                                while working independently and meeting project deadlines.
+                            </p>
+                            <div class="timeline-tags">
+                                <span class="timeline-tag">HTML/CSS/JS</span>
+                                <span class="timeline-tag">Client Collaboration</span>
+                                <span class="timeline-tag">Time Management</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-card">
+                            <h3 class="timeline-role">Video Editor</h3>
+                            <p class="timeline-org">Video Editing</p>
+                            <p class="timeline-desc">
+                                I have been a video editor from high school through college. I was assigned to make promotional videos for the school, and I made videos for birthdays, parties, and funerals, plus content for Facebook, Instagram, and TikTok.
+                            </p>
+                            <div class="timeline-tags">
+                                <span class="timeline-tag">CapCut</span>
+                                <span class="timeline-tag">Canva</span>
+                                <span class="timeline-tag">Photoshop</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+        </main>
+
+
+        <!-- ============================================
+             FOOTER & CONTACT
+             ============================================ -->
+        <footer class="site-footer" id="contact">
+
+            <div class="footer-hire">
+                <span class="eyebrow">Let's Work Together</span>
+                <h2>Would you like to hire me?</h2>
+                <p class="footer-lead">Send a message and I'll get back to you as soon as I can — whether it's a full project, a quick freelance gig, or just a question.</p>
+
+                <form id="contactForm" class="contact-form">
+                    <div class="form-row">
+                        <label for="user_name" class="sr-only">Your name</label>
+                        <input type="text" id="user_name" name="user_name" placeholder="Your name" autocomplete="name" required>
+
+                        <label for="user_email" class="sr-only">Your email</label>
+                        <input type="email" id="user_email" name="user_email" placeholder="Your email" autocomplete="email" required>
+                    </div>
+
+                    <label for="message" class="sr-only">Tell me about the project</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Tell me about the project..." required></textarea>
+
+                    <div class="form-action-row">
+                        <button type="submit" class="btn btn-primary" id="sendBtn">Send Message</button>
+                        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+                    </div>
+                </form>
+            </div>
+
+            <div class="footer-socials">
+                <h3>Find Me Elsewhere</h3>
+                <div class="social-links">
+                    <a href="https://x.com/acting_guren" target="_blank" rel="noopener noreferrer" class="social-link">
+                        <span class="social-icon" aria-hidden="true">X</span> Twitter<span class="sr-only"> (opens in a new tab)</span>
+                    </a>
+                    <a href="https://www.instagram.com/guren_senpai_tv/" target="_blank" rel="noopener noreferrer" class="social-link">
+                        <span class="social-icon" aria-hidden="true">Ig</span> Instagram<span class="sr-only"> (opens in a new tab)</span>
+                    </a>
+                    <a href="https://www.tiktok.com/@guren_senpai" target="_blank" rel="noopener noreferrer" class="social-link">
+                        <span class="social-icon" aria-hidden="true">Tt</span> TikTok<span class="sr-only"> (opens in a new tab)</span>
+                    </a>
+                    <a href="https://github.com/Gen67" target="_blank" rel="noopener noreferrer" class="social-link">
+                        <span class="social-icon" aria-hidden="true">Gh</span> GitHub<span class="sr-only"> (opens in a new tab)</span>
+                    </a>
                 </div>
             </div>
-        </div>
 
+            <div class="footer-bottom">
+                <p>&copy; <span id="footerYear"></span> Jessel Glenn V. Icatar. All rights reserved.</p>
+            </div>
 
-        <div class="slider-wrap" id="projects">
-          <H1>My Work</H1>
-  <div class="slider" id="slider" tabindex="0">
-    <div class="slides" id="slides">
-      <div class="slide">
-        <img src="../images/warangta.png" alt="Warang ta">
-        <div class="slide-frame-border"></div>
-        <div class="slide-caption">Made a Educational Game Title "Warang Ta"</div>
-        <div class="slide-hover-info">
-              <h3 class="hover-info-title">Warang Ta</h3>
-              <p class="hover-info-desc">Warang Ta is an educational game about the history, culture, language, and tourist attractions of Kalibo, Aklan, featuring interactive quizzes and mini-games.</p>
-        </div>
-      </div>
-      <div class="slide">
-        <img src="../images/Enrollment.png" alt="Forest and lake landscape">
-        <div class="slide-frame-border"></div>
-        <div class="slide-caption">Made a Online Enrollment System</div>
-        <div class="slide-hover-info">
-         <h3 class="hover-info-title">Online Enrollment</h3>
-       <p class="hover-info-desc">Created a Online Enrollment where students can enroll online. Students can also check grades, schedule, school updates/news. Teachers can also use the website to post schedules, grades and school updates.</p>
-       </div>
-      </div>
-      <div class="slide">
-        <img src="../images/videoEditing.png" alt="Dog portrait">
-        <div class="slide-frame-border"></div>
-        <div class="slide-caption">Video Editing</div>
-        <div class="slide-hover-info">
-            <h3 class="hover-info-title">Video Editor</h3>
-            <p class="hover-info-desc">I can edit videos for Short, Reels and Tiktok. I can create high quality videos with good pacing, color grading, and sound design. </p>
-    </div>
-      </div>
-      <div class="slide">
-        <img src="../images/Coming soon.png" alt="Snowy mountain range">
-        <div class="slide-frame-border"></div>
-        <div class="slide-caption">Comming Soon</div>
-        <div class="slide-hover-info">
-           <h3 class="hover-info-title">Slide Title</h3>
-           <p class="hover-info-desc">A short description of what this image shows.</p>
-      </div>
-      </div>
-      <div class="slide">
-        <img src="../images/Coming soon.png" alt="Coastal cliffs">
-        <div class="slide-frame-border"></div>
-        <div class="slide-caption">Comming Soon</div>
-        <div class="slide-hover-info">
-          <h3 class="hover-info-title">Slide Title</h3>
-          <p class="hover-info-desc">A short description of what this image shows.</p>
-      </div>
-      </div>
+        </footer>
+
     </div>
 
-    <button class="nav-btn prev-btn" id="prevBtn" aria-label="Previous slide">&#10094;</button>
-    <button class="nav-btn next-btn" id="nextBtn" aria-label="Next slide">&#10095;</button>
-  </div>
 
-   
-  <div class="progress-track">
-    <div class="progress-bar" id="progressBar"></div>
-  </div>
+    <script src="skills-animate.js" defer></script>
 
-  <div class="dots" id="dots"></div>
-</div>
-
-<div class="skills-section" id="skills">
-    <div class="skills-heading">
-        <span class="eyebrow">What I Work With</span>
-        <h2>Skills</h2>
-    </div>
-
-    <div class="skills-grid">
-        <div class="skill-card">
-            <div class="skill-icon">Ja</div>
-            <p class="skill-name">Java</p>
-            <div class="skill-bar-track">
-                <div class="skill-bar-fill" data-fill="78"></div>
-            </div>
-            <span class="skill-percent">78%</span>
-        </div>
-        <div class="skill-card">
-            <div class="skill-icon">&lt;/&gt;</div>
-            <p class="skill-name">HTML</p>
-            <div class="skill-bar-track">
-                <div class="skill-bar-fill" data-fill="92"></div>
-            </div>
-            <span class="skill-percent">92%</span>
-        </div>
-        <div class="skill-card">
-            <div class="skill-icon">{ }</div>
-            <p class="skill-name">CSS</p>
-            <div class="skill-bar-track">
-                <div class="skill-bar-fill" data-fill="88"></div>
-            </div>
-            <span class="skill-percent">88%</span>
-        </div>
-        <div class="skill-card">
-            <div class="skill-icon">JS</div>
-            <p class="skill-name">JavaScript</p>
-            <div class="skill-bar-track">
-                <div class="skill-bar-fill" data-fill="84"></div>
-            </div>
-            <span class="skill-percent">84%</span>
-        </div>
-        <div class="skill-card">
-            <div class="skill-icon">⚛</div>
-            <p class="skill-name">React</p>
-            <div class="skill-bar-track">
-                <div class="skill-bar-fill" data-fill="73"></div>
-            </div>
-            <span class="skill-percent">73%</span>
-        </div>
-        <div class="skill-card">
-            <div class="skill-icon">TW</div>
-            <p class="skill-name">Tailwind</p>
-            <div class="skill-bar-track">
-                <div class="skill-bar-fill" data-fill="61"></div>
-            </div>
-            <span class="skill-percent">71%</span>
-        </div>
-        <div class="skill-card">
-            <div class="skill-icon">✳</div>
-            <p class="skill-name">Claude</p>
-            <div class="skill-bar-track">
-                <div class="skill-bar-fill" data-fill="95"></div>
-            </div>
-            <span class="skill-percent">95%</span>
-        </div>
-        <div class="skill-card">
-            <div class="skill-icon">UX</div>
-            <p class="skill-name">UI/UX Design</p>
-            <div class="skill-bar-track">
-                <div class="skill-bar-fill" data-fill="80"></div>
-            </div>
-            <span class="skill-percent">80%</span>
-        </div>
-        <div class="skill-card">
-            <div class="skill-icon">DB</div>
-            <p class="skill-name">Data Management</p>
-            <div class="skill-bar-track">
-                <div class="skill-bar-fill" data-fill="70"></div>
-            </div>
-            <span class="skill-percent">70%</span>
-        </div>
-        <div class="skill-card">
-            <div class="skill-icon">Gh</div>
-            <p class="skill-name">GitHub</p>
-            <div class="skill-bar-track">
-                <div class="skill-bar-fill" data-fill="90"></div>
-            </div>
-            <span class="skill-percent">90%</span>
-        </div>
-    </div>
-</div>
-
-<div class="credentials-section" id="credentials">
-    <div class="credentials-heading">
-        <span class="eyebrow">Recognition</span>
-        <h2>Certificates &amp; Awards</h2>
-        <p class="credentials-lead">A few certifications, awards, and my diploma from throughout my studies and training.</p>
-    </div>
-
-    <div class="credentials-grid">
-
-        <a href="../images/Diploma.png" target="_blank" rel="noopener noreferrer" class="credential-card">
-            <span class="credential-badge">Diploma</span>
-            <div class="credential-thumb">
-                <img src="../images/Diploma.png" alt="Diploma">
-            </div>
-            <div class="credential-info">
-                <h3 class="credential-title">Bachelor's Science in Computer Science</h3>
-                <p class="credential-issuer">Garcia College of Technology &middot; 2026</p>
-            </div>
-        </a>
-
-        <a href="../images/Digital Manager Certificate.png" target="_blank" rel="noopener noreferrer" class="credential-card">
-            <span class="credential-badge">Certificate</span>
-            <div class="credential-thumb">
-                <img src="../images/Digital Manager Certificate.png">
-            </div>
-            <div class="credential-info">
-                <h3 class="credential-title">Social Media Marketing</h3>
-                <p class="credential-issuer">Hubspot Academy &middot; 2026</p>
-            </div>
-        </a>
-
-        <a href="../images/OJT Cert.png" target="_blank" rel="noopener noreferrer" class="credential-card">
-            <span class="credential-badge">Certificate</span>
-            <div class="credential-thumb">
-                <img src="../images/OJT Cert.png" alt="Certificate">
-            </div>
-            <div class="credential-info">
-                <h3 class="credential-title">On-the-Job Training Completion</h3>
-                <p class="credential-issuer">Provincial General Services Office &middot; 2026</p>
-            </div>
-        </a>
-
-        <a href="../images/People'sChoice.png" target="_blank" rel="noopener noreferrer" class="credential-card">
-            <span class="credential-badge award">Award</span>
-            <div class="credential-thumb">
-                <img src="../images/People'sChoice.png" alt="Award">
-            </div>
-            <div class="credential-info">
-                <h3 class="credential-title">The People's Choice</h3>
-                <p class="credential-issuer">Poster Making &middot; 2024</p>
-            </div>
-        </a>
-
-    </div>
-</div>
-
-<div class="video-section" id="editing">
-    <div class="video-heading">
-        <span class="eyebrow">See It In Action</span>
-        <h2>Video Editing</h2>
-        <p class="video-lead">A short reel showing my approach to pacing, color grading, and sound design.</p>
-    </div>
-
-   <div class="video-frame">
-    <video
-        class="showcase-video"
-        controls
-        preload="metadata"
-        poster="../images/thumbnail.png">
-
-        <source src="../videos/Compress.mp4" type="video/mp4">
-
-        Your browser doesn't support embedded video.
-        <a href="../videos/Compress.mp4">Download the video</a>
-    </video>
-</div>
-
-<div class="designs-section" id="designs">
-    <div class="designs-heading">
-        <span class="eyebrow">Visual Work</span>
-        <h2>Graphic Designs</h2>
-        <p class="designs-lead">A few pieces showing my range across branding, social media, and print layouts.</p>
-    </div>
-
-    <div class="designs-grid">
-
-        <div class="design-card">
-            <img src="../images/Poster Media.png" alt="Poster design">
-            <div class="design-overlay">
-                <h3 class="design-title">Poster Design</h3>
-                <p class="design-category">Print &middot; Layout Design</p>
-            </div>
-        </div>
-
-        <div class="design-card">
-            <img src="../images/Event Poster.png" alt="Event Poster">
-            <div class="design-overlay">
-                <h3 class="design-title">Event Poster</h3>
-                <p class="design-category">Social Media Design</p>
-            </div>
-        </div>
-
-        <div class="design-card">
-            <img src="../images/Social Media Post.png" alt="Social media post design">
-            <div class="design-overlay">
-                <h3 class="design-title">Social Media Post</h3>
-                <p class="design-category">Social Media Design</p>
-            </div>
-        </div>
-
-        <div class="design-card">
-            <img src="../images/Banner Design.png" alt="Banner design">
-            <div class="design-overlay">
-                <h3 class="design-title">Web Banner</h3>
-                <p class="design-category">Digital Ad Design</p>
-            </div>
-        </div>
-
-        <div class="design-card">
-            <img src="../images/Business Card.png" alt="Business card design">
-            <div class="design-overlay">
-                <h3 class="design-title">Business Card</h3>
-                <p class="design-category">Print &middot; Branding</p>
-            </div>
-        </div>
-
-        <div class="design-card">
-            <img src="../images/YTThumbnail.png" alt="Thumbnail design">
-            <div class="design-overlay">
-                <h3 class="design-title">Video Thumbnail</h3>
-                <p class="design-category">Social Media Design</p>
-            </div>
-        </div>
-
-    </div>
-</div>
-<!--
-<div class="channels-section" id="videos">
-    <div class="channels-heading">
-        <span class="eyebrow">Watch My Content</span>
-        <h2>YouTube &amp; TikTok</h2>
-        <p class="channels-lead">Same videos, two platforms — follow along on whichever you use.</p>
-
-        <div class="channel-follow-row">
-            <a href="https://www.youtube.com/@guren_was_here" target="_blank" rel="noopener noreferrer" class="follow-btn follow-youtube">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.6 7.2s-.21-1.5-.87-2.16c-.83-.87-1.76-.87-2.19-.92C15.4 4 12 4 12 4h-.01s-3.39 0-6.53.12c-.43.05-1.36.05-2.19.92-.66.66-.87 2.16-.87 2.16S2.18 9 2.18 10.8v1.68c0 1.8.22 3.6.22 3.6s.21 1.5.87 2.16c.83.87 1.92.84 2.4.93 1.74.17 7.33.22 7.33.22s3.4-.01 6.54-.13c.43-.05 1.36-.05 2.19-.92.66-.66.87-2.16.87-2.16s.22-1.8.22-3.6v-1.68c0-1.8-.22-3.6-.22-3.6zM9.95 14.6V8.8l5.6 2.9-5.6 2.9z"/></svg>
-                YouTube
-            </a>
-            <a href="https://www.tiktok.com/@guren_senpai" target="_blank" rel="noopener noreferrer" class="follow-btn follow-tiktok">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82c-.87-.96-1.35-2.2-1.35-3.52h-3.07v13.9c0 1.56-1.27 2.83-2.83 2.83a2.83 2.83 0 0 1-2.83-2.83 2.83 2.83 0 0 1 2.83-2.83c.3 0 .58.05.85.14V10.4a6 6 0 0 0-.85-.06A5.95 5.95 0 0 0 3.5 16.3a5.95 5.95 0 0 0 5.95 5.95 5.95 5.95 0 0 0 5.95-5.95V9.1a8.7 8.7 0 0 0 5.08 1.63V7.66a5.33 5.33 0 0 1-3.88-1.84z"/></svg>
-                TikTok
-            </a>
-        </div>
-    </div>
-
-    <div class="channels-grid">
-
-        <div class="video-card">
-            <div class="video-embed">
-                <iframe
-                    src="https://www.youtube.com/embed/sTl0DBXaT3M"
-                    title="The Mora Game - SFX re-edit"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                    loading="lazy">
-                </iframe>
-            </div>
-            <p class="video-card-title">The Mora Game - SFX re-edit | BOW BOW BOW 🎶 | #fyp #foryou #GenshinImpact</p>
-        </div>
-
-        <div class="video-card">
-            <div class="video-embed">
-                <iframe
-                    src="https://www.youtube.com/embed/S3wf4Lvrb-0"
-                    title="Paimon can't Catch that"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                    loading="lazy">
-                </iframe>
-            </div>
-            <p class="video-card-title">Paimon can't Catch that 😂 | #fyp #foryou #GenshinImpact</p>
-        </div>
-
-        <div class="video-card">
-            <div class="video-embed">
-                <iframe
-                    src="https://www.youtube.com/embed/Ksak220bphg"
-                    title="He's happy for her"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                    loading="lazy">
-                </iframe>
-            </div>
-            <p class="video-card-title">He's happy for her🥲 | Multo 🎶 | #fyp #foryou #GenshinImpact</p>
-        </div>
-
-        <div class="video-card">
-            <div class="video-embed">
-                <iframe
-                    src="https://www.youtube.com/embed/2WPsdLzGg4Q"
-                    title="Traveler and Childe's Master"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                    loading="lazy">
-                </iframe>
-            </div>
-            <p class="video-card-title">Traveler and Childe's Master #genshinimpact #genshin #gesnhinimpact</p>
-        </div>
-
-    </div>
-</div>
-
--->
-  <div class="experience-section" id="experience">
-    <div class="experience-heading">
-        <span class="eyebrow">Where I've Worked</span>
-        <h2>Work Experience</h2>
-    </div>
-
-    <div class="timeline">
-
-        <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-card">
-                <h3 class="timeline-role">Supervising Administrative Officer Assistant</h3>
-                <p class="timeline-org">Provincial General Services Office (PGSO) &middot; On-the-Job Trainee</p>
-                <p class="timeline-desc">
-                    Served as an On-the-Job Trainee (OJT) assistant to the Supervising Administrative Officer,
-                    assisting with administrative tasks, document organization, data encoding, and daily
-                    office operations while gaining professional workplace experience.
-                </p>
-                <div class="timeline-tags">
-                    <span class="timeline-tag">Administrative Support</span>
-                    <span class="timeline-tag">Data Encoding</span>
-                    <span class="timeline-tag">Document Organization</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-card">
-                <h3 class="timeline-role">Freelancer</h3>
-                <p class="timeline-org">Freelance Developer</p>
-                <p class="timeline-desc">
-                    Worked as a freelance developer, assisting clients with websites and digital projects
-                    while applying HTML, CSS, JavaScript, and basic programming skills. This experience
-                    strengthened problem-solving, communication, time management, and client collaboration
-                    while working independently and meeting project deadlines.
-                </p>
-                <div class="timeline-tags">
-                    <span class="timeline-tag">HTML/CSS/JS</span>
-                    <span class="timeline-tag">Client Collaboration</span>
-                    <span class="timeline-tag">Time Management</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-card">
-                <h3 class="timeline-role">Video Editor</h3>
-                <p class="timeline-org">Video Editing</p>
-                <p class="timeline-desc">
-                    I been a video editor starting from Highschool to College, have been assign to make a promotional videos for the school, made videos for birthdays, parties, funeral, and contents for facebook, instagram and TikTok. 
-                </p>
-                <div class="timeline-tags">
-                    <span class="timeline-tag">Capcut</span>
-                    <span class="timeline-tag">Canva</span>
-                    <span class="timeline-tag">Photoshop</span>
-                </div>
-            </div>
-          </div>
-    </div>
-</div>
-
-  <footer class="site-footer" id="contact">
-
-    <div class="footer-hire">
-        <span class="eyebrow">Let's Work Together</span>
-        <h2>Would you like to hire me?</h2>
-        <p class="footer-lead">Send a message and I'll get back to you as soon as I can — whether it's a full project, a quick freelance gig, or just a question.</p>
-
-        <form id="contactForm" class="contact-form">
-            <div class="form-row">
-                <input type="text" id="user_name" name="user_name" placeholder="Your name" required>
-                <input type="email" id="user_email" name="user_email" placeholder="Your email" required>
-            </div>
-            <textarea id="message" name="message" rows="4" placeholder="Tell me about the project..." required></textarea>
-
-            <div class="form-action-row">
-                <button type="submit" class="btn btn-primary" id="sendBtn">Send Message</button>
-                <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
-            </div>
-        </form>
-    </div>
-
-    <div class="footer-socials">
-        <h3>Find Me Elsewhere</h3>
-        <div class="social-links">
-            <a href="https://x.com/acting_guren" target="_blank" rel="noopener noreferrer" class="social-link">
-                <span class="social-icon">X</span> Twitter
-            </a>
-            <a href="https://www.instagram.com/guren_senpai_tv/" target="_blank" rel="noopener noreferrer" class="social-link">
-                <span class="social-icon">Ig</span> Instagram
-            </a>
-            <a href="https://www.tiktok.com/@guren_senpai" target="_blank" rel="noopener noreferrer" class="social-link">
-                <span class="social-icon">Tt</span> TikTok
-            </a>
-            <a href="https://github.com/Gen67" target="_blank" rel="noopener noreferrer" class="social-link">
-                <span class="social-icon">Gh</span> GitHub
-            </a>
-        </div>
-    </div>
-
-    <div class="footer-bottom">
-        <p>&copy; <span id="footerYear"></span> Jessel Glenn V. Icatar. All rights reserved.</p>
-    </div>
-
-</footer>
-
-
-    </div>
-    <script src="skills-animate.js"></script>
-    <script src="Script/footer-contact.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script>
-      (function () {
+/* ============================================
+   PROJECTS SLIDER
+   ============================================ */
+(function () {
   const slider = document.getElementById('slider');
   const slidesContainer = document.getElementById('slides');
   const slides = Array.from(slidesContainer.querySelectorAll('.slide'));
   const dotsContainer = document.getElementById('dots');
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
+  const pauseBtn = document.getElementById('pauseBtn');
   const progressBar = document.getElementById('progressBar');
-
 
   let current = 0;
   const total = slides.length;
@@ -572,10 +659,15 @@
   let autoplayTimer = null;
   let progressStart = null;
   let progressRAF = null;
+
+  // isPaused: hover, touch, keyboard focus, or slider off-screen
+  // userPaused: the Pause button (starts paused if the visitor prefers reduced motion)
   let isPaused = false;
+  let userPaused = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   slides.forEach((_, i) => {
     const dot = document.createElement('button');
+    dot.type = 'button';
     dot.className = 'dot' + (i === 0 ? ' active' : '');
     dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
     dot.addEventListener('click', () => goTo(i));
@@ -595,8 +687,14 @@
       } else if (i === mod(current + 1, total)) {
         s.classList.add('next-slide');
       }
+      // Screen readers only read the slide that is showing
+      s.setAttribute('aria-hidden', i === current ? 'false' : 'true');
     });
-    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    dots.forEach((d, i) => {
+      d.classList.toggle('active', i === current);
+      if (i === current) d.setAttribute('aria-current', 'true');
+      else d.removeAttribute('aria-current');
+    });
   }
 
   function goTo(index) {
@@ -639,6 +737,8 @@
 
   slider.addEventListener('mouseenter', pauseAutoplay);
   slider.addEventListener('mouseleave', resumeAutoplay);
+  slider.addEventListener('focusin', pauseAutoplay);
+  slider.addEventListener('focusout', resumeAutoplay);
 
   function pauseAutoplay() {
     isPaused = true;
@@ -654,14 +754,15 @@
   function restartAutoplay() {
     clearTimeout(autoplayTimer);
     cancelAnimationFrame(progressRAF);
-    progressBar.style.width = '0%';
-    if (isPaused) return;
+    progressBar.style.transform = 'scaleX(0)';
+    if (isPaused || userPaused) return;
 
     progressStart = performance.now();
     function animateProgress(ts) {
       const elapsed = ts - progressStart;
       const pct = Math.min((elapsed / AUTOPLAY_DELAY) * 100, 100);
-      progressBar.style.width = pct + '%';
+      // transform is cheap for the browser; width would redo layout every frame
+      progressBar.style.transform = 'scaleX(' + pct / 100 + ')';
       if (elapsed < AUTOPLAY_DELAY && !isPaused) {
         progressRAF = requestAnimationFrame(animateProgress);
       }
@@ -669,34 +770,54 @@
     progressRAF = requestAnimationFrame(animateProgress);
 
     autoplayTimer = setTimeout(() => {
-      if (!isPaused) next();
+      if (!isPaused && !userPaused) next();
     }, AUTOPLAY_DELAY);
   }
 
+  // Pause / Play button
+  function updatePauseButton() {
+    pauseBtn.textContent = userPaused ? 'Play slideshow' : 'Pause slideshow';
+  }
+
+  pauseBtn.addEventListener('click', () => {
+    userPaused = !userPaused;
+    updatePauseButton();
+    restartAutoplay();
+  });
+
+  // Stop working while the slider is off-screen
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) resumeAutoplay();
+      else pauseAutoplay();
+    }, { threshold: 0.25 }).observe(slider);
+  }
+
   updateUI();
+  updatePauseButton();
   restartAutoplay();
+})();
 
 
-
-})(); 
-
-
+/* ============================================
+   THEME TOGGLE
+   ============================================ */
 (function () {
     const root = document.documentElement;
     const toggle = document.getElementById('themeToggle');
     const icon = document.getElementById('themeIcon');
     const label = document.getElementById('themeLabel');
- 
+
     // Guard: if the toggle button isn't on the page (wrong/missing IDs),
     // bail out quietly instead of throwing and breaking scripts below it.
     if (!toggle || !icon || !label) {
         console.warn('Theme toggle: expected elements (#themeToggle, #themeIcon, #themeLabel) not found on the page.');
         return;
     }
- 
+
     const sunPath = '<circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>';
     const moonPath = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
- 
+
     function applyTheme(theme) {
         if (theme === 'light') {
             root.setAttribute('data-theme', 'light');
@@ -707,22 +828,26 @@
             icon.innerHTML = moonPath;
             label.textContent = 'Dark';
         }
+        toggle.setAttribute('aria-pressed', theme === 'light' ? 'true' : 'false');
     }
- 
+
     let current = 'dark';
     applyTheme(current);
- 
+
     toggle.addEventListener('click', function () {
         current = current === 'dark' ? 'light' : 'dark';
         applyTheme(current);
     });
 })();
 
+
 /* ============================================
    CONTACT FORM — sends the message via EmailJS
    (a client-side service; no backend server
-   needed). Falls back to a plain mailto: link
-   if EmailJS isn't configured or fails.
+   needed). The EmailJS library is only loaded
+   when someone starts using the form. Falls back
+   to a plain mailto: link if EmailJS isn't
+   configured or fails.
    ============================================ */
 
 const EMAILJS_CONFIG = {
@@ -745,7 +870,6 @@ const YOUR_EMAIL_ADDRESS = "youremail@example.com"; // used only for the mailto:
 
   if (!form) return;
 
-
   const isConfigured =
     EMAILJS_CONFIG.PUBLIC_KEY !== "YOUR_PUBLIC_KEY" &&
     EMAILJS_CONFIG.SERVICE_ID !== "YOUR_SERVICE_ID" &&
@@ -754,8 +878,26 @@ const YOUR_EMAIL_ADDRESS = "youremail@example.com"; // used only for the mailto:
     EMAILJS_CONFIG.SERVICE_ID &&
     EMAILJS_CONFIG.TEMPLATE_ID;
 
-  if (isConfigured && window.emailjs) {
-    emailjs.init({ publicKey: EMAILJS_CONFIG.PUBLIC_KEY });
+  // Load the EmailJS library only when someone starts using the form
+  let emailjsReady = null;
+
+  function loadEmailJS() {
+    if (emailjsReady) return emailjsReady;
+    emailjsReady = new Promise(function (resolve, reject) {
+      const script = document.createElement("script");
+      script.src = "https://cdn.jsdelivr.net/npm/@emailjs/browser@4.4.1/dist/email.min.js";
+      script.onload = function () {
+        emailjs.init({ publicKey: EMAILJS_CONFIG.PUBLIC_KEY });
+        resolve();
+      };
+      script.onerror = reject;
+      document.head.appendChild(script);
+    });
+    return emailjsReady;
+  }
+
+  if (isConfigured) {
+    form.addEventListener("focusin", loadEmailJS, { once: true });
   }
 
   function setStatus(text, type) {
@@ -783,7 +925,7 @@ const YOUR_EMAIL_ADDRESS = "youremail@example.com"; // used only for the mailto:
     e.preventDefault();
     sendBtn.disabled = true;
 
-    if (!isConfigured || !window.emailjs) {
+    if (!isConfigured) {
       setStatus("Email service not set up yet — opening your email app instead.", "");
       mailtoFallback();
       sendBtn.disabled = false;
@@ -792,8 +934,10 @@ const YOUR_EMAIL_ADDRESS = "youremail@example.com"; // used only for the mailto:
 
     setStatus("Sending...", "");
 
-    emailjs
-      .sendForm(EMAILJS_CONFIG.SERVICE_ID, EMAILJS_CONFIG.TEMPLATE_ID, form)
+    loadEmailJS()
+      .then(function () {
+        return emailjs.sendForm(EMAILJS_CONFIG.SERVICE_ID, EMAILJS_CONFIG.TEMPLATE_ID, form);
+      })
       .then(function () {
         setStatus("Message sent — thanks for reaching out!", "success");
         form.reset();
@@ -809,23 +953,32 @@ const YOUR_EMAIL_ADDRESS = "youremail@example.com"; // used only for the mailto:
   });
 })();
 
+
+/* ============================================
+   EXPLORE BUTTON — scrolls to the projects slider
+   ============================================ */
 (function () {
   const exploreBtn = document.getElementById('exploreBtn');
   if (!exploreBtn) return;
- 
+
   const TARGET_SELECTOR = '.slider-wrap'; // change to '.skills-section' or another id if you'd rather land there
- 
+
   exploreBtn.addEventListener('click', function () {
     const target = document.querySelector(TARGET_SELECTOR);
     if (!target) {
       console.warn('Explore Portfolio: no element found matching', TARGET_SELECTOR);
       return;
     }
-    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
   });
 })();
 
 
+/* ============================================
+   SKELETON LOADERS — shimmer placeholder on
+   image/iframe wrappers until the media loads.
+   ============================================ */
 (function () {
   const HOST_SELECTOR = '.slide, .credential-thumb, .design-card, .my-image-frame, .video-embed';
   const hosts = document.querySelectorAll(HOST_SELECTOR);
@@ -835,7 +988,7 @@ const YOUR_EMAIL_ADDRESS = "youremail@example.com"; // used only for the mailto:
     const media = host.querySelector('img, iframe');
     if (!media) return;
 
-
+    // Already cached/loaded — no skeleton needed
     if (media.tagName === 'IMG' && media.complete && media.naturalWidth > 0) return;
 
     host.classList.add('skeleton-host', 'is-loading');
@@ -848,12 +1001,7 @@ const YOUR_EMAIL_ADDRESS = "youremail@example.com"; // used only for the mailto:
     media.addEventListener('error', done, { once: true });
   });
 })();
-
-
-
-  </script>
-
-
+    </script>
 
 </body>
 </html>
