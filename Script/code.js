@@ -359,3 +359,133 @@ const YOUR_EMAIL_ADDRESS = "youremail@example.com"; // used only for the mailto:
     media.addEventListener('error', done, { once: true });
   });
 })();
+
+
+(function () {
+  const grid = document.getElementById('reelsGrid');
+  if (!grid) return;
+
+  // Works out which platform a link is from, and what is needed to play it
+  function parseVideo(url) {
+    let u;
+    try { u = new URL(url); } catch (e) { return null; }
+    const host = u.hostname.replace(/^www\./, '').replace(/^m\./, '');
+
+    if (host === 'youtube.com' || host === 'youtu.be') {
+      const parts = u.pathname.split('/').filter(Boolean);
+      let id = null;
+      if (host === 'youtu.be') id = parts[0];
+      else if (parts[0] === 'shorts' || parts[0] === 'embed') id = parts[1];
+      else id = u.searchParams.get('v');
+
+      if (id && /^[\w-]{11}$/.test(id)) {
+        return {
+          platform: 'youtube',
+          label: 'YouTube Shorts',
+          openText: 'Open on YouTube',
+          thumb: 'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg',
+          embed: 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&playsinline=1'
+        };
+      }
+    }
+
+    if (host === 'tiktok.com') {
+      const match = u.pathname.match(/\/video\/(\d+)/);
+      if (match) {
+        return {
+          platform: 'tiktok',
+          label: 'TikTok',
+          openText: 'Open on TikTok',
+          thumb: null,   // TikTok does not give out thumbnails, so a styled placeholder is used
+          embed: 'https://www.tiktok.com/player/v1/' + match[1] + '?autoplay=1&rel=0'
+        };
+      }
+    }
+
+    return null;
+  }
+
+  function el(tag, className, text) {
+    const node = document.createElement(tag);
+    if (className) node.className = className;
+    if (text) node.textContent = text;
+    return node;
+  }
+
+  Array.from(grid.querySelectorAll('a.reel-link')).forEach(function (link) {
+    const item = link.closest('li');
+    if (!item) return;
+
+    const url = link.href;
+    const title = link.textContent.trim() || 'Untitled video';
+    const info = parseVideo(url);
+
+    const card = el('article', 'reel-card');
+    const media = el('div', 'reel-media');
+
+    if (info) {
+      const play = el('button', 'reel-play');
+      play.type = 'button';
+      play.setAttribute('aria-label', 'Play video: ' + title);
+
+      if (info.thumb) {
+        const img = el('img', 'reel-thumb');
+        img.src = info.thumb;
+        img.alt = '';
+        img.loading = 'lazy';
+        img.decoding = 'async';
+        // If the thumbnail cannot load, fall back to the styled placeholder
+        img.addEventListener('error', function () {
+          img.remove();
+          media.classList.add('reel-media--no-thumb');
+          play.insertBefore(el('span', 'reel-placeholder', info.label), play.firstChild);
+        });
+        play.appendChild(img);
+      } else {
+        media.classList.add('reel-media--no-thumb');
+        play.appendChild(el('span', 'reel-placeholder', info.label));
+      }
+
+      play.appendChild(el('span', 'reel-badge reel-badge--' + info.platform, info.label));
+
+      const icon = el('span', 'reel-play-icon');
+      icon.setAttribute('aria-hidden', 'true');
+      play.appendChild(icon);
+
+      // The real player is only created when someone presses play
+      play.addEventListener('click', function () {
+        const frame = document.createElement('iframe');
+        frame.className = 'reel-frame';
+        frame.src = info.embed;
+        frame.title = title;
+        frame.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+        frame.allowFullscreen = true;
+        frame.referrerPolicy = 'strict-origin-when-cross-origin';
+
+        media.classList.remove('skeleton-host', 'is-loading');
+        media.replaceChildren(frame);
+        frame.focus();
+      });
+
+      media.appendChild(play);
+    } else {
+      // Link we cannot play here (for example a short TikTok link): show a card that opens it
+      media.classList.add('reel-media--no-thumb');
+      media.appendChild(el('span', 'reel-placeholder', 'Video'));
+    }
+
+    const details = el('div', 'reel-info');
+    details.appendChild(el('h3', 'reel-title', title));
+
+    const open = el('a', 'reel-open', info ? info.openText : 'Open link');
+    open.href = url;
+    open.target = '_blank';
+    open.rel = 'noopener noreferrer';
+    open.appendChild(el('span', 'sr-only', ' (opens in a new tab)'));
+    details.appendChild(open);
+
+    card.appendChild(media);
+    card.appendChild(details);
+    item.replaceChildren(card);
+  });
+})();
