@@ -1820,7 +1820,96 @@ html[data-theme="light"] .timeline::before {
 
 /* --- Video cards --- */
 
-.reels-grid {
+.edits-section {
+    padding: var(--space-xl) var(--space-lg);
+    border-top: 1px solid var(--border);
+    background-color: var(--surface);
+}
+
+.edits-heading {
+    max-width: 700px;
+    margin: 0 auto var(--space-lg);
+    text-align: center;
+}
+
+.edits-heading .eyebrow {
+    display: block;
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: var(--space-2xs);
+}
+
+.edits-heading h2 {
+    font-family: var(--font-display);
+    color: var(--text);
+    font-weight: 600;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    margin-bottom: var(--space-sm);
+}
+
+.edits-lead {
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin: 0 0 var(--space-lg);
+}
+
+
+/* Follow buttons */
+.channel-follow-row {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+}
+
+.follow-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2xs);
+    padding: var(--space-xs) var(--space-lg);
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    color: #fff;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.follow-btn svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+.follow-btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.08);
+}
+
+.follow-btn:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+/* Darker red so white text passes 4.5:1 */
+.follow-youtube {
+    background-color: #cc0029;
+    border-color: #cc0029;
+    box-shadow: 0 8px 20px -10px rgba(204, 0, 41, 0.6);
+}
+
+.follow-tiktok {
+    background-color: #111418;
+    border-color: var(--border);
+    box-shadow: 0 8px 20px -10px rgba(var(--accent-rgb), 0.35);
+}
+
+
+/* --- Video cards --- */
+
+.edits-grid {
     list-style: none;
     padding: 0;
     display: grid;
@@ -1830,15 +1919,9 @@ html[data-theme="light"] .timeline::before {
     margin: 0 auto;
 }
 
-/* Only visible if JavaScript is off: the plain link list */
-.reel-link {
-    color: var(--accent);
-}
-
-.reel-card {
+.edit-card {
     display: flex;
     flex-direction: column;
-    height: 100%;
     background-color: var(--surface-raised);
     border: 1px solid var(--border);
     border-radius: var(--radius);
@@ -1846,14 +1929,15 @@ html[data-theme="light"] .timeline::before {
     transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-.reel-card:hover {
+.edit-card:hover {
     transform: translateY(-4px);
     border-color: var(--accent);
     box-shadow: 0 16px 32px -18px rgba(var(--accent-rgb), 0.35);
 }
 
-/* Vertical (9:16) frame, like Shorts and TikToks */
-.reel-media {
+/* Vertical 9:16 frame. contain keeps the whole video visible,
+   even if a file is not exactly 9:16. */
+.edit-media {
     position: relative;
     width: 100%;
     aspect-ratio: 9 / 16;
@@ -1861,163 +1945,30 @@ html[data-theme="light"] .timeline::before {
     overflow: hidden;
 }
 
-/* TikTok (no thumbnail) and links that cannot be played */
-.reel-media--no-thumb {
-    background-color: var(--surface);
-    background-image: linear-gradient(160deg, var(--surface-raised) 0%, var(--surface) 100%);
-}
-
-.reel-play {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.edit-video {
+    display: block;
     width: 100%;
     height: 100%;
-    padding: 0;
-    border: 0;
-    background: transparent;
-    color: inherit;
-    cursor: pointer;
+    object-fit: contain;
+    background-color: #000;
 }
 
-.reel-play:focus-visible {
+.edit-video:focus-visible {
     outline: 3px solid var(--accent);
     outline-offset: -3px;
 }
 
-.reel-thumb {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 500ms var(--ease-smooth);
-}
-
-.reel-card:hover .reel-thumb {
-    transform: scale(1.05);
-}
-
-/* Soft dark fade over thumbnails so the badge and play icon stay readable */
-.reel-media:not(.reel-media--no-thumb) .reel-play::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.45) 0%, transparent 55%);
-}
-
-.reel-placeholder {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: var(--space-lg);
-    text-align: center;
-    font-family: var(--font-display);
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--text-muted);
-}
-
-.reel-badge {
-    position: absolute;
-    top: var(--space-sm);
-    left: var(--space-sm);
-    z-index: 2;
-    padding: 4px var(--space-sm);
-    background-color: rgba(5, 8, 12, 0.75);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    color: #fff;
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    border-radius: 999px;
-    backdrop-filter: blur(4px);
-}
-
-.reel-badge--youtube {
-    border-color: rgba(255, 90, 110, 0.7);
-}
-
-.reel-badge--tiktok {
-    border-color: rgba(79, 195, 247, 0.6);
-}
-
-.reel-play-icon {
-    position: relative;
-    z-index: 2;
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    background-color: var(--accent);
-    background-image: linear-gradient(135deg, var(--accent-strong) 0%, var(--accent) 100%);
-    box-shadow: 0 8px 22px -8px rgba(var(--accent-rgb), 0.6);
-    transition: transform 0.2s var(--ease-smooth);
-}
-
-/* The play triangle */
-.reel-play-icon::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-35%, -50%);
-    border-style: solid;
-    border-width: 10px 0 10px 16px;
-    border-color: transparent transparent transparent var(--accent-text);
-}
-
-.reel-play:hover .reel-play-icon {
-    transform: scale(1.08);
-}
-
-.reel-frame {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-    display: block;
-}
-
-.reel-info {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2xs);
-    flex: 1;
+.edit-info {
     padding: var(--space-sm) var(--space-md) var(--space-md);
 }
 
-.reel-title {
+.edit-title {
     margin: 0;
     font-family: var(--font-display);
     font-size: 0.9rem;
     font-weight: 600;
     line-height: 1.35;
     color: var(--text);
-}
-
-.reel-open {
-    display: inline-block;
-    margin-top: auto;
-    padding: var(--space-3xs) 0;
-    color: var(--accent);
-    font-size: 0.78rem;
-    font-weight: 600;
-    text-decoration: none;
-}
-
-.reel-open:hover {
-    text-decoration: underline;
-}
-
-.reel-open:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-    border-radius: 4px;
 }
 
 
@@ -2955,5 +2906,44 @@ html[data-theme="light"] .timeline::before {
     .reel-play-icon {
         width: 48px;
         height: 48px;
+    }
+}
+
+@media (max-width: 900px) {
+    .edits-grid {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 760px;
+    }
+}
+
+@media (max-width: 768px) {
+    .edits-section {
+        padding: var(--space-lg) var(--space-sm);
+    }
+
+    .edits-grid {
+        gap: var(--space-sm);
+    }
+}
+
+@media (max-width: 600px) {
+    .edits-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 420px;
+    }
+}
+
+@media (max-width: 480px) {
+    .follow-btn {
+        padding: var(--space-2xs) var(--space-md);
+        font-size: 0.8rem;
+    }
+
+    .edit-info {
+        padding: var(--space-xs) var(--space-sm) var(--space-sm);
+    }
+
+    .edit-title {
+        font-size: 0.82rem;
     }
 }

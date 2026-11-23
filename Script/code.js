@@ -488,4 +488,32 @@ const YOUR_EMAIL_ADDRESS = "youremail@example.com"; // used only for the mailto:
     card.appendChild(details);
     item.replaceChildren(card);
   });
+  
+})();
+
+(function () {
+  const videos = Array.from(document.querySelectorAll('.edit-video'));
+  if (!videos.length) return;
+
+  videos.forEach(function (video) {
+    video.addEventListener('play', function () {
+      videos.forEach(function (other) {
+        if (other !== video && !other.paused) other.pause();
+      });
+    });
+  });
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        const video = entry.target;
+        const isFullscreen = document.fullscreenElement === video || video.webkitDisplayingFullscreen;
+        if (!entry.isIntersecting && !video.paused && !isFullscreen) {
+          video.pause();
+        }
+      });
+    }, { threshold: 0.25 });
+
+    videos.forEach(function (video) { observer.observe(video); });
+  }
 })();
