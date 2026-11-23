@@ -1560,6 +1560,63 @@ html[data-theme="light"] .skill-bar-fill {
     box-shadow: 0 8px 20px -10px rgba(193, 53, 132, 0.6);
 }
 
+
+
+/* =========================================
+   BEFORE & AFTER - WIDESCREEN VIDEO FIX
+   ========================================= */
+
+/* Widescreen card */
+.edits-section > .edit-card--wide {
+    display: block !important;
+    position: relative;
+    width: min(900px, calc(100% - 32px)) !important;
+    max-width: 900px !important;
+    min-width: 0 !important;
+    height: auto !important;
+    margin: 40px auto 0 !important;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* Widescreen media container */
+.edits-section > .edit-card--wide > .edit-media--wide {
+    position: relative !important;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    aspect-ratio: 16 / 9 !important;
+    padding: 0 !important;
+    overflow: hidden;
+    background: #000;
+    box-sizing: border-box;
+}
+
+/* Actual video element */
+.edits-section > .edit-card--wide .edit-video {
+    position: absolute !important;
+    inset: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    max-height: none !important;
+    min-height: 0 !important;
+    aspect-ratio: 16 / 9 !important;
+    object-fit: contain !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Video title */
+.edits-section > .edit-card--wide .edit-title {
+    font-size: 1rem;
+    margin: 0;
+}
+
 /* Video grid — Shorts are vertical (9:16), so the grid runs narrower
    columns instead of the wide 16:9 cards a normal YouTube grid would use. */
 .channels-grid {
@@ -2952,5 +3009,12 @@ html[data-theme="light"] .timeline::before {
 
     .edit-title {
         font-size: 0.82rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .edits-section > .edit-card--wide {
+        width: 100% !important;
+        margin-top: 24px !important;
     }
 }
