@@ -1138,7 +1138,7 @@ main:focus {
     width: 0%;
     background-color: var(--accent);
     border-radius: 4px;
-    transition: width 900ms var(--ease-smooth);
+    transition: width 900ms var(--ease-smooth, ease);
 }
 
 html[data-theme="light"] .skill-bar-fill {
@@ -2419,6 +2419,10 @@ html[data-theme="light"] .timeline::before {
         transform: none;
     }
 }
+
+
+
+
 
 
 /* ============================================
