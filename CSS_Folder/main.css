@@ -112,6 +112,10 @@ html[data-theme="light"] body {
     background-repeat: no-repeat;
 }
 
+html[data-theme="light"] .header-section {
+    box-shadow: 0 10px 30px -18px rgba(7, 89, 133, 0.35);
+}
+
 .main-section {
     display: flex;
     flex-direction: column;
@@ -123,6 +127,7 @@ html[data-theme="light"] body {
     border-radius: var(--radius);
     position: relative;
     overflow: hidden;
+    overflow: clip;
     transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
@@ -147,6 +152,10 @@ main:focus {
     border-top-left-radius: var(--radius);
     border-top-right-radius: var(--radius);
     gap: var(--space-md);
+     position: sticky;
+    top: 0;
+    z-index: 50;  
+    box-shadow: 0 10px 30px -18px rgba(0, 0, 0, 0.5);
 }
 
 
@@ -287,6 +296,29 @@ main:focus {
     flex-shrink: 0;
 }
 
+.music-toggle .music-waves {
+    display: none;
+}
+
+.music-toggle[aria-pressed="true"] .music-waves {
+    display: inline;
+    animation: music-pulse 1.6s ease-in-out infinite;
+}
+
+.music-toggle[aria-pressed="true"] .music-mute {
+    display: none;
+}
+
+/* Highlighted while music is playing */
+.music-toggle[aria-pressed="true"] {
+    border-color: var(--accent);
+    background-color: rgba(var(--accent-rgb), 0.12);
+}
+
+@keyframes music-pulse {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0.35; }
+}
 
 /* ============================================
    03 — INTRO SECTION
@@ -606,7 +638,6 @@ main:focus {
     max-width: 1200px;
     margin: 0 auto;
     padding: var(--space-xl) var(--space-lg);
-    scroll-margin-top: var(--header-height, 80px);
 }
 
 /* "My Work" heading */
@@ -2442,11 +2473,7 @@ html[data-theme="light"] .timeline::before {
 
 /* --- @media: Header --- */
 
-@media (max-width: 900px) {
-    .socials-label {
-        display: none;
-    }
-}
+
 
 /* The navigation stays visible on small screens (it used to be hidden with
    display: none, which left phone users with no way to jump to sections). */
@@ -2508,6 +2535,52 @@ html[data-theme="light"] .timeline::before {
     }
 }
 
+
+/* Small desktops: hide the text labels so the header fits in one row */
+@media (max-width: 1200px) {
+    .socials-label {
+        display: none;
+    }
+}
+
+@media (min-width: 901px) and (max-width: 1200px) {
+    .theme-toggle span {
+        display: none;
+    }
+
+    .theme-toggle {
+        padding: var(--space-2xs);
+    }
+}
+
+/* Tablets and phones: stacked header that scrolls away normally.
+   (The navigation stays visible so visitors can still jump to sections.) */
+@media (max-width: 900px) {
+    .header-section {
+        position: static;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: var(--space-sm) var(--space-sm) var(--space-md);
+        gap: var(--space-sm);
+    }
+
+    .center-header-section {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--space-2xs) var(--space-sm);
+    }
+
+    .left-header-section {
+        justify-content: center;
+    }
+
+    .right-header-section {
+        margin-left: 0;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
 
 /* --- @media: Intro --- */
 
@@ -2591,47 +2664,6 @@ html[data-theme="light"] .timeline::before {
 
 /* --- @media: Slider --- */
 
-@media (max-width: 768px) {
-    :root {
-        --frame-radius: 20px;
-        --side-scale: 0.86;
-    }
-
-    .slider-wrap {
-        padding: var(--space-lg) var(--space-sm);
-    }
-
-    .slides {
-        width: 82%;
-        margin: 0 auto;
-    }
-
-    .slide.prev-slide {
-        transform: scale(var(--side-scale)) translate3d(-60%, 0, 0);
-    }
-
-    .slide.next-slide {
-        transform: scale(var(--side-scale)) translate3d(60%, 0, 0);
-    }
-
-    .progress-track {
-        width: 82%;
-    }
-
-    .nav-btn {
-        width: 38px;
-        height: 38px;
-        font-size: 15px;
-    }
-
-    .prev-btn {
-        left: 1%;
-    }
-
-    .next-btn {
-        right: 1%;
-    }
-}
 
 @media (max-width: 480px) {
     .slides {
@@ -3020,5 +3052,10 @@ html[data-theme="light"] .timeline::before {
     .edits-section > .edit-card--wide {
         width: 100% !important;
         margin-top: 24px !important;
+    }
+}
+@media (min-width: 901px) {
+    html {
+        scroll-padding-top: calc(var(--header-height) + var(--space-md));
     }
 }
